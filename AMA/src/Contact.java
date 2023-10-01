@@ -1,7 +1,7 @@
 
 public class Contact {
+	
+	private int aaa;
  
 
-	system.out.println("aojsgbaisobg");
-	
 }
