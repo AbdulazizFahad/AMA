@@ -1,5 +1,5 @@
 
-public class Contact {
+public class Contact implements Comparable{
 	
 
 	int phoneNumber;
