@@ -12,12 +12,12 @@ public class Contact implements Comparable<String>{
 
 	public Contact() {  // Default Constracutor
 	}
-	public Contact(String phoneNumber, String name, String email, String adress, String birthday, String notes) {
+	public Contact(String phoneNumber, String name, String email, String address, String birthday, String notes) {
 		
 		this.phoneNumber = phoneNumber;
 		this.name = name;
 		this.email = email;               // Constracutor
-		this.address = adress;
+		this.address = address;
 		this.birthday = birthday;
 		this.notes = notes;
 	}
@@ -50,10 +50,10 @@ public class Contact implements Comparable<String>{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getAdress() {
+	public String getAddress() {
 		return address;
 	}
-	public void setAdress(String adress) {
+	public void setAddress(String adress) {
 		this.address = adress;
 	}
 	public String getBirthday() {
@@ -74,7 +74,7 @@ public class Contact implements Comparable<String>{
 		System.out.println("Contact's phone number "+phoneNumber);
 		System.out.println("Contact's name "+name);
 		System.out.println("Contact's email "+email);                // This method display all contact's informations. 
-		System.out.println("Contact's adress "+address);
+		System.out.println("Contact's address "+address);
 		System.out.println("Contact's name "+birthday);
 		System.out.println("Contact's name "+notes);
 	}
@@ -95,7 +95,7 @@ public class Contact implements Comparable<String>{
 		System.out.println("Enter the Contact's email "+phoneNumber);            // read Contact Informations
 		email = input.nextLine();
 		
-		System.out.println("Enter the Contact's adress "+phoneNumber);
+		System.out.println("Enter the Contact's address "+phoneNumber);
 		address = input.nextLine();
 		
 		System.out.println("Enter the Contact's birthday "+phoneNumber);
