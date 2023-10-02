@@ -5,9 +5,6 @@ public class Phonebook {
 		
 		Scanner input = new Scanner(System.in);
 	    
-		switch ();
-		
-		case 1:
 			
 		
 
