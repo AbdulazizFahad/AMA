@@ -7,7 +7,7 @@ public class Contact {
 	String email;
 	String adress;     // Contact informations
 	String birthday;
-	String notess;
+	String notes;
 	
 
 }
