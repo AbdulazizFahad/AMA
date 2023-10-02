@@ -1,6 +1,7 @@
 
 public class Contact {
 	
+
 	int phoneNumber;
 	String name;
 	String email;
@@ -8,5 +9,5 @@ public class Contact {
 	String birthday;
 	String notess;
 	
-	
+
 }
