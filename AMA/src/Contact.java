@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class Contact implements Comparable<String>{
 	
-
 	private String phoneNumber;
 	private String name;
 	private String email;
