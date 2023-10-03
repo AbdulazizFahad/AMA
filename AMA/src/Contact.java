@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
-public class Contact implements Comparable<String>{
+    public class Contact implements Comparable<String>{
+	
 	
 	private String phoneNumber;
 	private String name;
@@ -8,6 +9,7 @@ public class Contact implements Comparable<String>{
 	private String address;     // Contact informations
 	private String birthday;
 	private String notes;
+	
 
 	public Contact() {  // Default Constracutor
 	}
@@ -72,14 +74,16 @@ public class Contact implements Comparable<String>{
 		
 		System.out.println("Contact's phone number "+phoneNumber);
 		System.out.println("Contact's name "+name);
-		System.out.println("Contact's email "+email);                // This method display all contact's informations. 
+		System.out.println("Contact's email "+email);             // This method display all contact's informations. 
 		System.out.println("Contact's address "+address);
 		System.out.println("Contact's name "+birthday);
 		System.out.println("Contact's name "+notes);
 	}
 	public int compareTo(Contact c) {
-		return name.compareTo(c.getName());      // Compare :: (name > c) -> = 1 , if (name < c) ->  = -1 , (name=c) -> = 0 
-		
+		return name.compareTo(c.getName() );      // Compare :: (name > c) -> = 1 , if (name < c) ->  = -1 , (name=c) -> = 0 
+	}	
+	public int compareTo(String cName) {
+			return name.compareTo(cName);
 	}
 	
 	public void readContact() {
@@ -91,7 +95,7 @@ public class Contact implements Comparable<String>{
 		System.out.println("Enter the Contact's name "+phoneNumber);
 		name = input.nextLine();
 		
-		System.out.println("Enter the Contact's email "+phoneNumber);            // read Contact Informations
+		System.out.println("Enter the Contact's email "+phoneNumber);  // read Contact informations
 		email = input.nextLine();
 		
 		System.out.println("Enter the Contact's address "+phoneNumber);
