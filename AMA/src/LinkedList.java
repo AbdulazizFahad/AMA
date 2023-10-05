@@ -1,17 +1,14 @@
 
 class Node<T> {
 	
-	T data;
-	Node next;
+	public T data;
+	public Node next;
 	
 	public Node(T d) {
 		data=d;
 		next=null;
 	}
 }
-
-
-
 public class LinkedList<T> {
 	
 	Node<T> head;

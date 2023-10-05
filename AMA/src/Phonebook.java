@@ -7,17 +7,17 @@ public class Phonebook {
 		
 		int choice;
 		
-		System.out.println("Welcome to the Linked Tree Phonebook!"); // Menu for choosing.
+		System.out.println("Welcome to the Linked Tree Phonebook!"); // Menu for choosing .
 		
 		do {	
 			System.out.println("Please choose an option: ");
-			System.out.println("1. Add a contact");
-			System.out.println("2. Search for a contact");
-			System.out.println("3. Delete a contact");
-			System.out.println("4. Schedule an event");
-			System.out.println("5. Print event details");
-			System.out.println("6. Print contacts by first name");
-			System.out.println("7. Print all events alphabetically");
+			System.out.println("1. Add a contact ");
+			System.out.println("2. Search for a contact ");
+			System.out.println("3. Delete a contact ");
+			System.out.println("4. Schedule an event ");
+			System.out.println("5. Print event details ");
+			System.out.println("6. Print contacts by first name ");
+			System.out.println("7. Print all events alphabetically ");
 			System.out.println("8. Exit");
 			System.out.println();
 			System.out.print("Enter your Choice: ");
