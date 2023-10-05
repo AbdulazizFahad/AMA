@@ -3,8 +3,8 @@ import java.util.Scanner; // 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
     public class Contact implements Comparable<String>{
 	
 	
-	private String phoneNumber;
 	private String name;
+	private String phoneNumber;
 	private String email;
 	private String address;     // Contact informations
 	private String birthday;
@@ -13,37 +13,34 @@ import java.util.Scanner; // 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
 
 	public Contact() {  // Default Constracutor
 	}
-	public Contact(String phoneNumber, String name, String email, String address, String birthday, String notes) {
+	public Contact(String name, String phoneNumber, String email, String address, String birthday, String notes) {
 		
-		this.phoneNumber = phoneNumber;
 		this.name = name;
+		this.phoneNumber = phoneNumber;
 		this.email = email;               // Constracutor
 		this.address = address;
 		this.birthday = birthday;
 		this.notes = notes;
 	}
 	public Contact(Contact c) {
-		this.phoneNumber = c.phoneNumber;
 		this.name = c.name;
+		this.phoneNumber = c.phoneNumber;
 		this.email = c.email;         // Copy Constracutor
 		this.address = c.address;
 		this.birthday = c.birthday;
 		this.notes = c.notes;
-	}
-	
-	
-	
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
 	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 	public String getEmail() {
 		return email;
@@ -69,7 +66,7 @@ import java.util.Scanner; // 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
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-	
+
 	public void displayContact() {
 		
 		System.out.println("Contact's phone number "+phoneNumber);
@@ -79,9 +76,7 @@ import java.util.Scanner; // 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
 		System.out.println("Contact's name "+birthday);
 		System.out.println("Contact's name "+notes);
 	}
-	public int compareTo(Contact c) {
-		return name.compareTo(c.getName() );      // Compare :: (name > c) -> = 1 , if (name < c) ->  = -1 , (name=c) -> = 0 
-	}	
+	      // CompareTo :: (name > c) -> = 1 , if (name < c) ->  = -1 , (name=c) -> = 0 
 	public int compareTo(String cName) {
 			return name.compareTo(cName);
 	}
