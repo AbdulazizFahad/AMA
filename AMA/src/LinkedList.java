@@ -14,6 +14,10 @@ public class LinkedList<T> {
 	Node<T> head;
 	Node<T> current;
 	
+	public boolean isFull() {      // Check if the LinkedList is full (We know it's never FULL :) )
+		return false;
+	}
+	
 	public boolean isEmpty() {     //Checking if the list is empty
 
         return head == null;
@@ -33,17 +37,17 @@ public class LinkedList<T> {
         current = current.next;
     }
 
-    public T retrieve () {  // obtain the current node
+    public T retrieve() {  // obtain the current node
 
         return current.data;
     }
 
-    public void update (T val) { // updating the node
+    public void update(T val) { // updating the node
 
         current.data = val;
     }
 
-    public void insert (T val) { // inserting nodes
+    public void insert(T val) { // inserting nodes
 
         Node<T> tmp;
 

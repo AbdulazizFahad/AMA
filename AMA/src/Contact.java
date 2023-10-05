@@ -2,7 +2,6 @@ import java.util.Scanner; // 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
 
     public class Contact implements Comparable<String>{
 	
-	
 	private String name;
 	private String phoneNumber;
 	private String email;
