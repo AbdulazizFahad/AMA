@@ -3,16 +3,13 @@ public class Phonebook {
 
 	public static void main(String[] args) {
 		
-
-			
 		Scanner input = new Scanner(System.in);
 		
 		int choice;
 		
 		System.out.println("Welcome to the Linked Tree Phonebook!"); // Menu for choosing.
 		
-		do {
-			
+		do {	
 			System.out.println("Please choose an option: ");
 			System.out.println("1. Add a contact");
 			System.out.println("2. Search for a contact");

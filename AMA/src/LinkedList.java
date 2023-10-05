@@ -1,16 +1,15 @@
 
 class Node<T> {
 	
-	T data;
-	Node next;
+	private T data;
+	private Node next;
 }
 
 
 
 public class LinkedList<T> {
 	
-	Node<T> head;
-	Node<T> current;
+	private Node<T> head;
+	private Node<T> current;
 	
-
 }
