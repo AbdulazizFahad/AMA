@@ -10,7 +10,6 @@ import java.util.Scanner; // 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
 	private String birthday;
 	private String notes;
 	
-
 	public Contact() {  // Default Constracutor
 	}
 	public Contact(String name, String phoneNumber, String email, String address, String birthday, String notes) {
