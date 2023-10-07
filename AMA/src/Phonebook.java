@@ -3,7 +3,11 @@ public class Phonebook {
 
 	public static void main(String[] args) {
 		
-		Scanner input = new Scanner(System.in);
+
+	Integer x=500,y=120;
+	Contact c1 = new Contact("a","0564712006","Azizswe.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
+    c1.displayContact();
+		/* Scanner input = new Scanner(System.in);
 		
 		int choice;
 		
@@ -70,6 +74,11 @@ public class Phonebook {
 		
 		}while(choice >= 1 && choice < 8);
 
-	}
+	} */
 
+		
+		
+}
+ 
+	
 }
