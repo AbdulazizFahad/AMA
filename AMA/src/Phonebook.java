@@ -4,11 +4,26 @@ public class Phonebook {
 	public static void main(String[] args) {
 		
 
-	Integer x=500,y=120;
-	Contact c1 = new Contact("a","0564712006","Azizswe.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
-    c1.displayContact();
-		/* Scanner input = new Scanner(System.in);
-		
+	LinkedList<Contact> l1 = new LinkedList<Contact>();
+	
+	Contact c1 = new Contact("a","453643636","Azizswe.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
+	Contact c11 = new Contact("a","346345345","Azizswe.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
+	Contact c2 = new Contact("a","05644712006","Azizswe.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
+	Contact c3 = new Contact("a","0564734612006","Azizswe.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
+	Contact c4 = new Contact("a","0564734612006","Azizswe.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
+	Contact c5 = new Contact("a","0564713464362006","Azizswe.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
+	Contact c6 = new Contact("a","46346436436436","Azizswe.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
+    l1.insert(c6);
+    l1.insert(c5);
+    l1.insert(c3);
+    System.out.println(l1.Search(c5));	
+	
+	
+	
+	
+	
+	
+	/*	Scanner input = new Scanner(System.in);
 		int choice;
 		
 		System.out.println("Welcome to the Linked Tree Phonebook!"); // Menu for choosing .
@@ -74,11 +89,11 @@ public class Phonebook {
 		
 		}while(choice >= 1 && choice < 8);
 
-	} */
+	} 
 
 		
-		
+		*/
 }
  
-	
 }
+	

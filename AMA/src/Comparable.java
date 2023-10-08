@@ -1,5 +1,5 @@
 
 public interface Comparable <T> {
 	
-	public int compareTo(String cName);
+	public int compareTo(T c);
 }

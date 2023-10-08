@@ -2,28 +2,29 @@
 class Node<T> {
 	
 	public T data;
-	public Node next;
+	public Node<T> next;
 	
 	public Node(T d) {
+		
 		data=d;
 		next=null;
 	}
 }
 public class LinkedList<T> {
 	
-	Node<T> head;
-	Node<T> current;
+	private Node<T> head;
+	private Node<T> current;
 	
-	public boolean isFull() {      // Check if the LinkedList is full (We know it's never FULL :) )
+	public boolean Full() {      // Check if the LinkedList is full (We know it's never FULL :) )
+	
 		return false;
 	}
 	
-	public boolean isEmpty() {     //Checking if the list is empty
-
+	public boolean isEmpty() {     //Checking if the LinkedList is empty
         return head == null;
     }
 
-    public boolean isLast() {  //Checking if the node is the last one
+    public boolean Last() {  //Checking if the current node is the last one on the LinkedList
 
         return current.next == null;
     }
@@ -37,50 +38,70 @@ public class LinkedList<T> {
         current = current.next;
     }
 
-    public T retrieve() {  // obtain the current node
+    public T retrieve() {  // obtain the current node data 
 
         return current.data;
     }
 
-    public void update(T val) { // updating the node
+    public void update(T val) { // updating the node data
 
         current.data = val;
     }
 
     public void insert(T val) { // inserting nodes
 
-        Node<T> tmp;
-
-        if (isEmpty())
-             head=current=new Node<T>(val);
+        Node<T> newNode = new Node<T>(val);
+   
+        if (head==null) {
+        	head=newNode;
+        	current=newNode;
+        }
+        	
         else {
 
-            tmp = current.next;
-            current.next = new Node <T> (val);
-            current = current.next;
-            current.next = tmp;
+            newNode.next = current.next;
+            current.next = newNode;
+            current = newNode;
         }
     }
 
-    public void remove() { // removing the current node
+    public void remove() { // removing the current node and put the current in the next Node 
 
-        if (current == head)
-            head = null;
-
+        if (current == head) {
+            head = head.next;
+            current=current.next;
+        }
             else {
+                Node<T> tmp = head;
 
-                Node <T> tmp = head;
-
-                while(tmp.next != current)
+                while(tmp.next != current) {
                     tmp = tmp.next;
-
-                    tmp.next = current.next;
             }
-        if (current.next == null)
-            current = head;
-        else
+        
+        tmp.next = current.next;
+            }
+        if (current.next != null)
             current = current.next;
+        else
+            current = head;
     }
+    public void Add(T x) {
+    	
+    	
+    }
+    public boolean Search(T x) {
+    	Node<T> tmp = head;
+    	while(tmp!=null) {
+    		if( ( (Contact)x).getPhoneNumber().equals( ((Contact)tmp.data).getPhoneNumber()  )  )
+    			return true;
+    		tmp=tmp.next;
+    	}
+		return false;
+    }
+   
+
+    
+    
 
 
 }
