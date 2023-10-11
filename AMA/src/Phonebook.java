@@ -6,26 +6,6 @@ public class Phonebook {
 
 	LinkedList<Contact> Contacts = new LinkedList<Contact>();
 	
-	Contact c1 = new Contact("aziz","453643636","az@swe.ksu","Riyadh,alkhuzama","14,05,2003","friend from work");
-	Contact c0 = new Contact("mohammed","346345345","gfdh.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
-	Contact c2 = new Contact("khaled","0564712006","az@swe.ksu","Riyadh,alkhuzama","14,05,2003","friend from work");
-	Contact c3 = new Contact("abdullah","0564712006","dsdfdfg.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
-	Contact c4 = new Contact("naif","0564222712006","az@swe.ksu","Riyadh,alkhuzama","14,05,2003","friend from work");
-	Contact c5 = new Contact("saad","0564713464362006","fh.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
-	Contact c6 = new Contact("rayad","46346436436436","az@swe.ksu","Riyadh,alkhuzama","14,05,203","friend from work");
-	
-    Contacts.insert(c1);
-    Contacts.insert(c2);
-    Contacts.insert(c3);
-	Contacts.insert(c4);
-	Contacts.insert(c5);
-	Contacts.insert(c6);
-	
-	
-	
-	
-	
-	
 	
 	Scanner input = new Scanner(System.in);
 	
@@ -42,13 +22,14 @@ public class Phonebook {
 			System.out.println("5. Print event details ");
 			System.out.println("6. Print contacts by first name ");
 			System.out.println("7. Print all events alphabetically ");
-			System.out.println("8. Exit");
+			System.out.println("8. Print all Contacts in Phonebook");
+			System.out.println("9. Exit");
 			System.out.println();
 			System.out.print("Enter your Choice: ");
 		
 			choice = input.nextInt();
 		
-			while(choice < 1 || choice > 8) {     // In case user puts number not between 1-8.
+			while(choice < 1 || choice > 9) {     // In case user puts number not between 1-9.
 				System.out.println();
 				System.out.println("Sorry the choice you have choosen is not available");
 				System.out.print("Enter a correct value, 1 through 8: ");
@@ -61,23 +42,29 @@ public class Phonebook {
 			switch(choice) {
 		
 			case 1:
-			  
+				
+				Scanner add = new Scanner(System.in);
+
 				System.out.print("Enter the contact's name: ");
-				String newName = input.next();
+				String newName = add.next();
 				System.out.print("Enter the contact's phone number: ");
-				String newPhone = input.next();
+				String newPhone = add.next();
 				System.out.print("Enter the contact's email address: ");
-				String newEmail = input.next();
+				String newEmail = add.next();
 				System.out.print("Enter the contact's address: ");
-				String newAddress = input.next();
+				String newAddress = add.next();
 				System.out.print("Enter the contact's birthday: ");
-				String newBirthday = input.next();
+				String newBirthday = add.next();
 				System.out.print("Enter any notes for the contact: ");
-				String newNotes = input.next();
+				String newNotes = add.next();
 				System.out.println();
 				System.out.println();
-				System.out.println("Contact added successfully!");
-				System.out.println();
+				
+				Contact c = new Contact(newName, newPhone, newEmail, newAddress, newBirthday, newNotes);
+				
+				Contacts.addContact(c);
+				
+				
 
               
 				break;
@@ -142,24 +129,35 @@ public class Phonebook {
 			
 			
 			case 3: 
-			
+				
+				Scanner delete = new Scanner(System.in);
+				Scanner deleteContact = new Scanner(System.in);
 				System.out.println("Enter delete criteria:");
 				System.out.println("1. Delete by name");
 				System.out.println("2. Delete by phone number");
 				System.out.println();
 				System.out.print("Enter your choice: ");
 				System.out.println();
-				int deleteChoice = input.nextInt();
+				int deleteChoice = delete.nextInt();
+				
+				switch(deleteChoice) {
+				
+				case 1:
+					System.out.print("Enter Name of contact: ");
+					String deleteByName = deleteContact.nextLine();
+					Contacts.deleteContactByName(deleteByName);
+					break;
 			
-				if(deleteChoice == 1) {
-				
-				}
-				if(deleteChoice == 2) {
-				
-				}
-				if(deleteChoice > 2 || deleteChoice < 1) {
+				case 2:
+					System.out.print("Enter Phone number of contact: ");
+					String deleteByPhone = deleteContact.nextLine();
+					Contacts.deleteContactByName(deleteByPhone);
+					break;
+					
+				default:
 					System.out.println("Your input was invalid");
 					System.out.println();
+					break;
 				}
 			
 				break;
@@ -175,8 +173,6 @@ public class Phonebook {
 				String newEventDateTime = input.next();
 				System.out.print("Enter event location: ");
 				String newEventLocation = input.next();
-			
-			
 			
 				System.out.println();
 				System.out.println("Event scheduled successfully!");
@@ -219,15 +215,23 @@ public class Phonebook {
 				break;
 			
 			case 7: 
+				
+				
 				break;
-			
-			case 8: 
+				
+				
+			case 8:
+				Contacts.displayAllContactsInformation();
+				break;
+				
+				
+			case 9: 
 				System.out.println();
 				System.out.println("Goodbye!");
 				break;	
 			}
 	
-		}while(choice >= 1 && choice < 8); 
+		}while(choice >= 1 && choice < 9); 
 
 	} 
 

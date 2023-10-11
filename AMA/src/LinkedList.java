@@ -87,12 +87,16 @@ public class LinkedList<T> {
             current = head;
     }
     public void displayAllContactsInformation() {
+    	int i = 0;
     	Node<T> tmp = head;
     		while(tmp != null) {
+    			i++;
     			((Contact)tmp.data).displayContact();
     			tmp = tmp.next;
     			System.out.println("-------------------------------------------------");
     		}
+    		System.out.println("You have "+i+" Contacts in the Phonebook");
+    		System.out.println();
     	
     }
     public boolean isUnique(T x) {
@@ -105,38 +109,49 @@ public class LinkedList<T> {
 		return true;
     }
     public void addContact(T x) {
-  
-    	if(isUnique(x)==false) {
-    		System.out.println("Contact already exists");
-    		return;
-    	}
-    	else {    
-    	Node<T> newNode = new Node<T>(x);
-    	if(head==null) {
-    		head=newNode;
-    		current=newNode;
-    		System.out.println("Contact added successfully!");
-    	}
-    	else {
-    		Node<T> tmp = head;
-    		Node<T> pervious = null;
-    		if(((Contact)x).compareTo(((Contact)tmp.data).getName()) < 0) {
-    			newNode.next = head;
-    			head = newNode;
-        		System.out.println("Contact added successfully!");
-    		}
-    		else {
-    			while(( (Contact)tmp.data).compareTo(((Contact)x).getName()) <= 0 && tmp != null){
-    				pervious = tmp;
-    				tmp = tmp.next;
-    			}
-    			pervious.next = newNode;
-    			newNode.next = tmp;
-    			
-    		 }		
-    	  }
+
+        if(isUnique(x)==false) {
+            System.out.println("Contact already exists");
+            System.out.println();
+            return;
         }
+        else {
+        	
+        Node<T> newNode = new Node<T>(x);
+        
+        if(head==null) {
+        	
+            head=newNode;
+            current=newNode;
+            System.out.println("Contact added successfully!");
+            System.out.println();
+            return;
+        }
+        else {
+
+            if(((Contact)x).compareTo(((Contact)head.data).getName() ) < 0) {
+                newNode.next = head;
+                head = newNode;
+                System.out.println("Contact added successfully!");
+                System.out.println();
+                return;
+            }
+            else {
+                Node<T> tmp = head;
+                Node<T> pervious = null;
+                while(tmp != null && ((Contact)tmp.data).compareTo(((Contact)x).getName()) <= 0 ){
+                    pervious = tmp;
+                    tmp = tmp.next;
+                }
+                pervious.next = newNode;
+                newNode.next = tmp;
+                System.out.println("Contact added successfully!");
+                System.out.println();
+             }
+          }
+        }  
     }
+
     
     public void deleteContactByName(String name) {
     	    	
@@ -146,22 +161,34 @@ public class LinkedList<T> {
     	}
 
     	else {
+    		
+			if(((Contact)head.data).getName().equalsIgnoreCase(name)) {
+    			head = head.next;
+    			System.out.println("Contact deleted successfully!");
+    			System.out.println();
+    			return;
+    			
+    		}
+    		
+    		else {
     		Node<T> tmp = head;
     		Node<T> pervious = null;
     		while(tmp != null ) {
     			if(((Contact)tmp.data).getName().equalsIgnoreCase(name)) {
     				pervious.next = tmp.next;
     				tmp = pervious.next;
-    				System.out.println("Deleted successfully!");
+    				System.out.println("Contact deleted successfully!");
+    				System.out.println();
     				return;
     			}
+    			pervious = tmp;
     			tmp = tmp.next;
-    			pervious = pervious.next;
     		      }
-    		
+    		}
     	}
     }
     public void deleteContactByPhoneNumber(String phoneNumber) {
+
     	
     	if(head==null) {
     		System.out.println("The Phonebook is empty can not delete");
@@ -169,21 +196,33 @@ public class LinkedList<T> {
     	}
 
     	else {
+    		
+			if(((Contact)head.data).getName().equalsIgnoreCase(phoneNumber)) {
+    			head = head.next;
+    			System.out.println("Contact deleted successfully!");
+    			System.out.println();
+    			return;
+    			
+    		}
+    		
+    		else {
     		Node<T> tmp = head;
     		Node<T> pervious = null;
     		while(tmp != null ) {
     			if(((Contact)tmp.data).getName().equalsIgnoreCase(phoneNumber)) {
     				pervious.next = tmp.next;
     				tmp = pervious.next;
-    				System.out.println("Deleted successfully!");
+    				System.out.println("Contact deleted successfully!");
+    				System.out.println();
     				return;
     			}
+    			pervious = tmp;
     			tmp = tmp.next;
-    			pervious = pervious.next;
     		      }
-    		
+    		}
     	}
     }
+
     public void SearchByName(String name) {
     	if(head==null)
     		System.out.println();

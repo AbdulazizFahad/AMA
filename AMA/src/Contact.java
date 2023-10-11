@@ -66,7 +66,7 @@ import java.util.Scanner;
 	}
 	@Override
 	public int compareTo(String cName) {                               //## We will use this method in Sorting to know which Object must be First 
-		return this.name.toUpperCase().compareTo(cName.toUpperCase()); //## This method Will 
+		return this.name.compareTo(cName); //## This method Will 
                                                                        //## For Example "A".compareTo("z"); --> Will return -25 since z is greater than a in the decimal value
 	}
 	//Testing
