@@ -212,6 +212,10 @@ public class Phonebook {
 			
 			
 			case 6: 
+				
+				System.out.print("Enter the first name: ");
+				String contactFirstName = input.next();
+				
 				break;
 			
 			case 7: 
