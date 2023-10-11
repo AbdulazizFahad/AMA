@@ -4,26 +4,33 @@ public class Phonebook {
 	public static void main(String[] args) {
 		
 
-	LinkedList<Contact> l1 = new LinkedList<Contact>();
+	LinkedList<Contact> Contacts = new LinkedList<Contact>();
 	
-	Contact c1 = new Contact("a","453643636","Azizswe.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
-	Contact c11 = new Contact("a","346345345","Azizswe.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
-	Contact c2 = new Contact("a","05644712006","Azizswe.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
-	Contact c3 = new Contact("a","0564734612006","Azizswe.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
-	Contact c4 = new Contact("a","0564734612006","Azizswe.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
-	Contact c5 = new Contact("a","0564713464362006","Azizswe.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
-	Contact c6 = new Contact("a","46346436436436","Azizswe.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
-    l1.insert(c6);
-    l1.insert(c5);
-    l1.insert(c3);
-    System.out.println(l1.Search(c5));	
+	Contact c1 = new Contact("aziz","453643636","az@swe.ksu","Riyadh,alkhuzama","14,05,2003","friend from work");
+	Contact c0 = new Contact("mohammed","346345345","gfdh.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
+	Contact c2 = new Contact("khaled","0564712006","az@swe.ksu","Riyadh,alkhuzama","14,05,2003","friend from work");
+	Contact c3 = new Contact("abdullah","0564712006","dsdfdfg.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
+	Contact c4 = new Contact("naif","0564222712006","az@swe.ksu","Riyadh,alkhuzama","14,05,2003","friend from work");
+	Contact c5 = new Contact("saad","0564713464362006","fh.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
+	Contact c6 = new Contact("rayad","46346436436436","az@swe.ksu","Riyadh,alkhuzama","14,05,203","friend from work");
+	
+    Contacts.insert(c1);
+    Contacts.insert(c2);
+    Contacts.insert(c3);
+	Contacts.insert(c4);
+	Contacts.insert(c5);
+	Contacts.insert(c6);
 	
 	
 	
 	
 	
 	
-	/*	Scanner input = new Scanner(System.in);
+	
+	
+	
+	Scanner input = new Scanner(System.in);
+	
 		int choice;
 		
 		System.out.println("Welcome to the Linked Tree Phonebook!"); // Menu for choosing .
@@ -56,10 +63,65 @@ public class Phonebook {
 			switch(choice) {
 			
 			case 1:
+				  
+                  
 				break;
 				
 				
 			case 2: 
+				System.out.println("******************************************");
+			    System.out.println("Enter search criteria:");
+                System.out.println("1. Name");
+                System.out.println("2. Phone Number");
+                System.out.println("3. Email Address");
+                System.out.println("4. Address");
+                System.out.println("5. Birthday");
+                System.out.print("Enter your choice: ");
+                
+                
+                Scanner searchCritrea = new Scanner(System.in);
+                int searchChoice = input.nextInt();
+                
+                switch(searchChoice){
+              
+                case 1:
+                	
+              System.out.println("Enter the contact's Name:");
+              String name = searchCritrea.nextLine();
+              Contacts.SearchByName(name);  
+              	  
+                break;
+                
+                case 2:
+                	System.out.println("Enter the contact's Phonenumber:");
+                    String phone = searchCritrea.nextLine();
+                    Contacts.SearchByPhoneNumber(phone);  
+                    	  
+                break;
+                
+                case 3:
+                	System.out.println("Enter the contact's Email Address:");
+                    String email = searchCritrea.nextLine();
+                    Contacts.SearchByEmail(email);
+                
+                break;
+                
+                case 4:
+                	System.out.println("Enter the contact's Address:");
+                    String address = searchCritrea.nextLine();
+                    Contacts.SearchByAddress(address);
+                
+                break;
+                
+                
+                case 5:
+                	System.out.println("Enter the contact's Birthday:");
+                    String birthday = searchCritrea.nextLine();
+                    Contacts.SearchByAddress(birthday);
+             
+                break;
+                
+                }
 				break;
 				
 				
@@ -87,13 +149,12 @@ public class Phonebook {
 				break;	
 			}
 		
-		}while(choice >= 1 && choice < 8);
+		}while(choice >= 1 && choice < 8); 
 
 	} 
 
 		
-		*/
-}
+	
  
 }
 	
