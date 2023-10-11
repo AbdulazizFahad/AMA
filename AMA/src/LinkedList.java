@@ -104,34 +104,84 @@ public class LinkedList<T> {
     	}
 		return true;
     }
-  /*  public void addContact(T x) {
-    
-    	if( isUnique(x)==false) {
+    public void addContact(T x) {
+  
+    	if(isUnique(x)==false) {
     		System.out.println("Contact already exists");
     		return;
     	}
+    	else {    
     	Node<T> newNode = new Node<T>(x);
-    	
     	if(head==null) {
     		head=newNode;
     		current=newNode;
+    		System.out.println("Contact added successfully!");
     	}
-    }
-   */
-    
-    public boolean deleteContact(String name) {
-    	    	
-    	if(head==null)
-    		return false;
     	else {
     		Node<T> tmp = head;
-    		while(tmp != null ) {
-    			if(((Contact)tmp.data).getName().equalsIgnoreCase(name))
-    			return true;
+    		Node<T> pervious = null;
+    		if(((Contact)x).compareTo(((Contact)tmp.data).getName()) < 0) {
+    			newNode.next = head;
+    			head = newNode;
+        		System.out.println("Contact added successfully!");
+    		}
+    		else {
+    			while(( (Contact)tmp.data).compareTo(((Contact)x).getName()) <= 0 && tmp != null){
+    				pervious = tmp;
+    				tmp = tmp.next;
+    			}
+    			pervious.next = newNode;
+    			newNode.next = tmp;
     			
+    		 }		
+    	  }
+        }
+    }
+    
+    public void deleteContactByName(String name) {
+    	    	
+    	if(head==null) {
+    		System.out.println("The Phonebook is empty can not delete");
+    		return;
+    	}
+
+    	else {
+    		Node<T> tmp = head;
+    		Node<T> pervious = null;
+    		while(tmp != null ) {
+    			if(((Contact)tmp.data).getName().equalsIgnoreCase(name)) {
+    				pervious.next = tmp.next;
+    				tmp = pervious.next;
+    				System.out.println("Deleted successfully!");
+    				return;
+    			}
     			tmp = tmp.next;
+    			pervious = pervious.next;
     		      }
-    		return false;
+    		
+    	}
+    }
+    public void deleteContactByPhoneNumber(String phoneNumber) {
+    	
+    	if(head==null) {
+    		System.out.println("The Phonebook is empty can not delete");
+    		return;
+    	}
+
+    	else {
+    		Node<T> tmp = head;
+    		Node<T> pervious = null;
+    		while(tmp != null ) {
+    			if(((Contact)tmp.data).getName().equalsIgnoreCase(phoneNumber)) {
+    				pervious.next = tmp.next;
+    				tmp = pervious.next;
+    				System.out.println("Deleted successfully!");
+    				return;
+    			}
+    			tmp = tmp.next;
+    			pervious = pervious.next;
+    		      }
+    		
     	}
     }
     public void SearchByName(String name) {

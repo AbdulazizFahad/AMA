@@ -1,4 +1,4 @@
-import java.util.Scanner; // 
+import java.util.Scanner; 
 
     public class Contact implements Comparable<String>{
 	
@@ -69,7 +69,7 @@ import java.util.Scanner; //
 		return this.name.toUpperCase().compareTo(cName.toUpperCase()); //## This method Will 
                                                                        //## For Example "A".compareTo("z"); --> Will return -25 since z is greater than a in the decimal value
 	}
-	//Testing 
+	//Testing
 	public static void main(String args[] ) {
 		Contact c1 = new Contact("A","0564712006","Azizswe.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
 	    Contact c2 = new Contact("AAZZZZaA","055345342","khaled.ksu@gmail.com","jeddah,rafha","14,05,1966","friend from my brother");
