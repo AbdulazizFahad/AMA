@@ -205,7 +205,7 @@ public class Phonebook {
 				
 				}
 				if(eventSearchChoice > 2 || eventSearchChoice < 1) {
-					System.out.println("Your input was invalid");
+					System.out.println("Your input was invalid!");
 					System.out.println();
 				}
 				break;
