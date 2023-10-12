@@ -1,19 +1,20 @@
 import java.util.Scanner; 
 
     public class Contact implements Comparable<String>{
-	
+    	
 	private String name;
 	private String phoneNumber;
 	private String email;
 	private String address;     // Contact informations
 	private String birthday;
 	private String notes;
+	private LinkedList<Event> events = new LinkedList<Event>(); // All event that has been schedule with this contact
 
 	public Contact(String name, String phoneNumber, String email, String address, String birthday, String notes) {
 		
 		this.name = name;
 		this.phoneNumber = phoneNumber;
-		this.email = email;               // Constracutor
+		this.email = email;               // Constructor
 		this.address = address;
 		this.birthday = birthday;
 		this.notes = notes;

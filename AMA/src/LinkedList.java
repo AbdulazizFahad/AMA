@@ -184,6 +184,7 @@ public class LinkedList<T> {
     			pervious = tmp;
     			tmp = tmp.next;
     		      }
+		       System.out.println("Not found");
     		}
     	}
     }
@@ -219,13 +220,14 @@ public class LinkedList<T> {
     			pervious = tmp;
     			tmp = tmp.next;
     		      }
+    		    System.out.println("Not found");
     		}
     	}
     }
 
     public void SearchByName(String name) {
     	if(head==null)
-    		System.out.println();
+    		System.out.println("The phonebook is empty");
     	else {
     		Node<T> tmp = head;
     		while(tmp != null) {
@@ -239,9 +241,9 @@ public class LinkedList<T> {
     		}System.out.println("Not found!");
     	}
     }
-   public void SearchByPhoneNumber(String PhoneNumber) {
+    public void SearchByPhoneNumber(String PhoneNumber) {
     	if(head==null)
-    		System.out.println();
+    		System.out.println("The phonebook is empty");
     	else {
     		Node<T> tmp = head;
     		while(tmp != null) {
@@ -257,7 +259,7 @@ public class LinkedList<T> {
     }
     public void SearchByEmail(String email){
    	 if(head==null)
-		 System.out.println("Not found!");
+ 		System.out.println("The phonebook is empty");
 	 else {
 		 boolean found = false;
 		 Node<T> tmp = head;
@@ -275,7 +277,7 @@ public class LinkedList<T> {
 }
     public void SearchByAddress(String address){
    	 if(head==null)
-		 System.out.println("Not found!");
+ 		System.out.println("The phonebook is empty");
 	 else {
 		 boolean found = false;
 		 Node<T> tmp = head;
@@ -293,7 +295,7 @@ public class LinkedList<T> {
 }
     public void SearchByBirthday(String birthday){
     	 if(head==null)
-    		 System.out.println("Not found!");
+     		System.out.println("The phonebook is empty");
     	 else {
     		 boolean found = false;
     		 Node<T> tmp = head;
@@ -309,5 +311,38 @@ public class LinkedList<T> {
         		 System.out.println("Not found!");
     	 }    	 
     }
+    public void SearchByFirstName(String FirstName) {
+    	
+    if(head==null) 
+		System.out.println("The phonebook is empty");
+    else {
+    	
+		 boolean found = false;
+    	Node<T> tmp = head;
+    	while(tmp != null) {
+    		
+    		String tmpFullName = ((Contact)tmp.data).getName();
+    		String tmpFirstName = tmpFullName.substring(0,tmpFullName.indexOf(" ")-1);
+    		if(tmpFirstName.equals(FirstName)) {
+    			found = true;
+   			 System.out.println("Contact found!");
+   			 ((Contact)tmp.data).displayContact();
+ 			 System.out.println("--------------------------------------");
+    		}
+    		tmp = tmp.next;
+    	} if(found==false)
+   		    System.out.println("Not found!");
+    }
+
+    
+    	
+    }
+    
+    public void displayEvent(LinkedList<Event> e) {
+    	
+    	if(e.head == null)
+    		return;
+    }
+    
     
 }

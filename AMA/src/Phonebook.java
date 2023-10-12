@@ -4,8 +4,8 @@ public class Phonebook {
 	public static void main(String[] args) {
 		
 
-	LinkedList<Contact> Contacts = new LinkedList<Contact>();
-	
+	LinkedList<Contact> Contacts = new LinkedList<Contact>(); // All Contacts with duplicate 
+	LinkedList<Event> Events = new LinkedList<Event>(); // All Events with duplicate 
 	
 	Scanner input = new Scanner(System.in);
 	
@@ -32,7 +32,7 @@ public class Phonebook {
 			while(choice < 1 || choice > 9) {     // In case user puts number not between 1-9.
 				System.out.println();
 				System.out.println("Sorry the choice you have choosen is not available");
-				System.out.print("Enter a correct value, 1 through 8: ");
+				System.out.print("Enter a correct value, 1 through 9: ");
 			
 				choice = input.nextInt();
 			}
@@ -46,7 +46,7 @@ public class Phonebook {
 				Scanner add = new Scanner(System.in);
 
 				System.out.print("Enter the contact's name: ");
-				String newName = add.next();
+				String newName = add.nextLine();
 				System.out.print("Enter the contact's phone number: ");
 				String newPhone = add.next();
 				System.out.print("Enter the contact's email address: ");
@@ -132,6 +132,7 @@ public class Phonebook {
 				
 				Scanner delete = new Scanner(System.in);
 				Scanner deleteContact = new Scanner(System.in);
+				
 				System.out.println("Enter delete criteria:");
 				System.out.println("1. Delete by name");
 				System.out.println("2. Delete by phone number");
@@ -208,10 +209,10 @@ public class Phonebook {
 			
 			
 			case 6: 
-				
+				Scanner firstName = new Scanner(System.in);
 				System.out.print("Enter the first name: ");
-				String contactFirstName = input.next();
-				
+				String contactFirstName = firstName.next();
+				Contacts.SearchByFirstName(contactFirstName);
 				break;
 			
 			case 7: 
