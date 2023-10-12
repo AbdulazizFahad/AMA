@@ -87,19 +87,55 @@ public class LinkedList<T> {
             current = head;
     }
     public void displayAllContactsInformation() {
-    	int i = 0;
     	Node<T> tmp = head;
     		while(tmp != null) {
-    			i++;
     			((Contact)tmp.data).displayContact();
-    			tmp = tmp.next;
     			System.out.println("-------------------------------------------------");
+    			tmp = tmp.next;
+    		}    	
+    }
+    public void displayAllEventsInformation() {
+    	Node<T> tmp = head;
+    		while(tmp != null) {
+    			((Event)tmp.data).displayEvent();
+    			System.out.println("-------------------------------------------------");
+    			tmp = tmp.next;
+    		}    	
+    }
+    public void displayLinkedListOfContacts(LinkedList<Contact> C) {
+    	
+    	if(C.head == null) 
+    		System.out.println("List is empty");
+    	else {
+    		Node<Contact> tmp = C.head;
+    		while(tmp!=null) {
+    			tmp.data.displayContact(); // display Contacts
+    			tmp.data.eventsInContact.displayAllEventsInformation(); // display all events with the contact 
+    			System.out.println("-------------------------------------------------");
+    			tmp = tmp.next;
     		}
-    		System.out.println("You have "+i+" Contacts in the Phonebook");
-    		System.out.println();
+    	}
+    	
     	
     }
-    public boolean isUnique(T x) {
+    public void displayLinkedListOfEvents(LinkedList<Event> E) {
+    	
+    	if(E.head == null)
+    		System.out.println("List is empty");
+    	else {
+    		Node<Event> tmp = E.head;
+    		while(tmp != null) {
+    			tmp.data.displayEvent(); // display Events
+    		    tmp.data.contactsInEvent.displayAllContactsInformation(); // display all contacts with the event
+			    System.out.println("-------------------------------------------------");
+			    tmp = tmp.next;
+    		}
+    	}
+    }
+    
+    public boolean isUniqueForContact(T x) {
+    	if(head == null)
+    		return true;
     	Node<T> tmp = head;
     	while(tmp != null) {
     		if(((Contact)x).getPhoneNumber().equalsIgnoreCase(((Contact)tmp.data).getPhoneNumber()) || ((Contact)x).getName().equalsIgnoreCase(((Contact)tmp.data).getName()))
@@ -110,8 +146,8 @@ public class LinkedList<T> {
     }
     public void addContact(T x) {
 
-        if(isUnique(x)==false) {
-            System.out.println("Contact already exists");
+        if(isUniqueForContact(x)==false) {
+            System.out.println("Contact already exists!");
             System.out.println();
             return;
         }
@@ -151,7 +187,61 @@ public class LinkedList<T> {
           }
         }  
     }
+   
+    public boolean isUniqueForEvent(String title) {
+    	if(head == null)
+    		return true;
+    	Node<T> tmp = head;
+    	while(tmp != null) {
+    		if(((Event)tmp.data).getTitle().equalsIgnoreCase(title))
+    			return false;
+    		tmp=tmp.next;
+    	}
+		return true;
+    }
+    public void addEvent(T x) {
 
+        if(isUniqueForEvent(((Event)x).getTitle())==false) {
+            System.out.println("Event already exists!");
+            System.out.println();
+            return;
+        }
+        else {
+        	
+        Node<T> newNode = new Node<T>(x);
+        
+        if(head==null) {
+        	
+            head=newNode;
+            current=newNode;
+            System.out.println("Event added successfully!");
+            System.out.println();
+            return;
+        }
+        else {
+
+            if(((Event)x).getTitle().compareTo(((Event)head.data).getTitle() ) < 0) {
+                newNode.next = head;
+                head = newNode;
+                System.out.println("Event added successfully!");
+                System.out.println();
+                return;
+            }
+            else {
+                Node<T> tmp = head;
+                Node<T> pervious = null;
+                while(tmp != null && ((Event)tmp.data).compareTo(((Event)x).getTitle()) <= 0 ){
+                    pervious = tmp;
+                    tmp = tmp.next;
+                }
+                pervious.next = newNode;
+                newNode.next = tmp;
+                System.out.println("Event added successfully!");
+                System.out.println();
+             }
+          }
+        }  
+    }
     
     public void deleteContactByName(String name) {
     	    	
@@ -343,6 +433,5 @@ public class LinkedList<T> {
     	if(e.head == null)
     		return;
     }
-    
     
 }

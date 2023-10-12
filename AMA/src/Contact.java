@@ -8,7 +8,7 @@ import java.util.Scanner;
 	private String address;     // Contact informations
 	private String birthday;
 	private String notes;
-	private LinkedList<Event> events = new LinkedList<Event>(); // All event that has been schedule with this contact
+	public LinkedList<Event> eventsInContact = new LinkedList<Event>(); // All event that has been schedule with this contact
 
 	public Contact(String name, String phoneNumber, String email, String address, String birthday, String notes) {
 		
@@ -65,7 +65,7 @@ import java.util.Scanner;
 		System.out.println("Birthday: "+birthday);
 		System.out.println("Notes: "+notes);
 	}
-	@Override
+ 	@Override
 	public int compareTo(String cName) {                               //## We will use this method in Sorting to know which Object must be First 
 		return this.name.compareTo(cName); //## This method Will 
                                                                        //## For Example "A".compareTo("z"); --> Will return -25 since z is greater than a in the decimal value

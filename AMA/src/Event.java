@@ -1,11 +1,11 @@
 
-public class Event {
+public class Event implements Comparable<String> {
 	
 	private String title;
 	private String date;
 	private String time;
 	private String location;
-	public LinkedList<Contact> contacts = new LinkedList<Contact>();
+	public LinkedList<Contact> contactsInEvent = new LinkedList<Contact>();
 	
 	public Event(String title, String date, String time, String location) {
 		super();
@@ -53,6 +53,11 @@ public class Event {
 		System.out.println("Event title: "+location);
 
 	}
+
+	@Override
+	public int compareTo(String Etitle) { // Same process in compareTo in Contact 
+		return this.title.compareTo(title);
+	} 
 	
 	
 

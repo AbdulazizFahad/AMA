@@ -215,7 +215,7 @@ public class Phonebook {
 				break;
 			
 			case 7: 
-				
+				Events.displayAllEventsInformation();
 				
 				break;
 				
