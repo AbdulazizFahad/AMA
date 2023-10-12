@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -7,9 +6,7 @@ class InvalidChoiceException extends Exception {
         super(message);
     }
 }
-=======
-import java.util.Scanner; //
->>>>>>> branch 'main' of https://github.com/AbdulazizFahad/AMA.git
+import java.util.Scanner;
 public class Phonebook {
 
 	public static void main(String[] args) {
