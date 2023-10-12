@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.Scanner; //
 public class Phonebook {
 
 	public static void main(String[] args) {
@@ -44,7 +44,6 @@ public class Phonebook {
 			case 1:
 				
 				Scanner add = new Scanner(System.in);
-
 				System.out.print("Enter the contact's name: ");
 				String newName = add.nextLine();
 				System.out.print("Enter the contact's phone number: ");
