@@ -8,7 +8,7 @@ import java.util.Scanner;
 	private String address;     // Contact informations
 	private String birthday;
 	private String notes;
-	public LinkedList<Event> eventsInContact = new LinkedList<Event>(); // All event that has been schedule with this contact
+	private LinkedList<Event> eventsInContact = new LinkedList<Event>(); // All event that has been schedule with this contact
 
 	public Contact(String name, String phoneNumber, String email, String address, String birthday, String notes) {
 		
@@ -55,7 +55,12 @@ import java.util.Scanner;
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-	
+	public LinkedList<Event> getEventsInContact() {
+		return eventsInContact;
+	}
+	public void setEventsInContact(LinkedList<Event> eventsInContact) {
+		this.eventsInContact = eventsInContact;
+	}
 	public void displayContact() {
 		 
 		System.out.println("Name: "+name);
@@ -68,14 +73,7 @@ import java.util.Scanner;
  	@Override
 	public int compareTo(String cName) {                               //## We will use this method in Sorting to know which Object must be First 
 		return this.name.compareTo(cName); //## This method Will 
-                                                                       //## For Example "A".compareTo("z"); --> Will return -25 since z is greater than a in the decimal value
+                                                    //## For Example "A".compareTo("z"); --> Will return -25 since z is greater than a in the decimal value
 	}
-	//Testing
-	public static void main(String args[] ) {
-		Contact c1 = new Contact("A","0564712006","Azizswe.ksu@gmail.com","Riyadh,alkhuzama","14,05,2003","friend from work");
-	    Contact c2 = new Contact("AAZZZZaA","055345342","khaled.ksu@gmail.com","jeddah,rafha","14,05,1966","friend from my brother");
-	    Contact c3 = new Contact("nawaf","0564712006","nawaf.ksu@gmail.com","makkah,asser","14,05,2001","friend from work");
-        System.out.println(c1.compareTo("z"));
-	 }
 	
 }

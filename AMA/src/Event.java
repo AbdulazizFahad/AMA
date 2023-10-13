@@ -5,11 +5,10 @@ public class Event implements Comparable<String> {
 	private String date;
 	private String time;
 	private String location;
-	public LinkedList<Contact> contactsInEvent = new LinkedList<Contact>();
-	
+	private LinkedList<Contact> contactsInEvent = new LinkedList<Contact>();
+
 	public Event(String title, String date, String time, String location) {
-		super();
-		title = title;
+		this.title = title;
 		this.date = date;
 		this.time = time;
 		this.location = location;
@@ -46,16 +45,23 @@ public class Event implements Comparable<String> {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	public LinkedList<Contact> getContactsInEvent() {
+		return contactsInEvent;
+	}
+
+	public void setContactsInEvent(LinkedList<Contact> contactsInEvent) {
+		this.contactsInEvent = contactsInEvent;
+	}
 	public void displayEvent() {
-		System.out.println("Event title: "+title);
-		System.out.println("Event title: "+date);
-		System.out.println("Event title: "+time);
-		System.out.println("Event title: "+location);
+		System.out.println("Event Title: "+title);
+		System.out.println("Event Date: "+date);
+		System.out.println("Event Time: "+time);
+		System.out.println("Event Location: "+location);
 
 	}
 
 	@Override
-	public int compareTo(String Etitle) { // Same process in compareTo in Contact 
+	public int compareTo(String title) { // Same process in compareTo in Contact 
 		return this.title.compareTo(title);
 	} 
 	
