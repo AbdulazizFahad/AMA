@@ -228,17 +228,6 @@ public class Phonebook {
 				           break;
 				        }
 
-				                                                                    // Exit the loop if the choice is valid
-				         
-				        
-				        
-				    
-				
-
-				
-				
-			
-			
 			case 6: 
 				
 				break;

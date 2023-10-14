@@ -212,6 +212,38 @@ public class LinkedList<T> {
         }  
     }
     
+    public void deleteEvent(String eventTitle) {
+    	
+    	if(head==null) {
+    		System.out.println("There are no events to delete!");
+    		return;
+    	}
+    	
+    	if(((event)head.data).getTitle().equalsIgnoreCase(eventTitle))
+    	{
+    		head = head.next;
+			System.out.println("Event deleted successfully!");
+			System.out.println();
+			return;
+    	}
+    	else {
+    		Node<T> tmp = head;
+    		Node<T> pervious = null;
+    		while(tmp != null ) {
+    			if(((Event)tmp.data).getTitle().equalsIgnoreCase(eventTitle)) {
+    				pervious.next = tmp.next;
+    				tmp = pervious.next;
+    				System.out.println("Event deleted successfully!");
+    				System.out.println();
+    				return;
+    			}
+    			pervious = tmp;
+    			tmp = tmp.next;
+    		      }
+		       System.out.println("Not found");
+    		}    	
+    }
+    
     public void deleteContactByName(String name) {
     	    	
     	if(head==null) {
@@ -222,6 +254,10 @@ public class LinkedList<T> {
     	else {
     		
 			if(((Contact)head.data).getName().equalsIgnoreCase(name)) {
+			while (Event)head.event != null) {
+				deleteEvent((Event)head.event.getTitle());
+				head = head.next;
+			}
     			head = head.next;
     			System.out.println("Contact deleted successfully!");
     			System.out.println();
@@ -234,6 +270,10 @@ public class LinkedList<T> {
     		Node<T> pervious = null;
     		while(tmp != null ) {
     			if(((Contact)tmp.data).getName().equalsIgnoreCase(name)) {
+    				while (Event)head.event != null) {
+    					deleteEvent((Event)head.event.getTitle());
+    					head = head.next;
+    				}
     				pervious.next = tmp.next;
     				tmp = pervious.next;
     				System.out.println("Contact deleted successfully!");
@@ -258,7 +298,11 @@ public class LinkedList<T> {
     	else {
     		
 			if(((Contact)head.data).getName().equalsIgnoreCase(phoneNumber)) {
-    			head = head.next;
+				while (Event)head.event != null) {
+					deleteEvent((Event)head.event.getTitle());
+					head = head.next;
+				}
+				head = head.next;
     			System.out.println("Contact deleted successfully!");
     			System.out.println();
     			return;
@@ -270,6 +314,10 @@ public class LinkedList<T> {
     		Node<T> pervious = null;
     		while(tmp != null ) {
     			if(((Contact)tmp.data).getName().equalsIgnoreCase(phoneNumber)) {
+    				while (Event)head.event != null) {
+    					deleteEvent((Event)head.event.getTitle());
+    					head = head.next;
+    				}
     				pervious.next = tmp.next;
     				tmp = pervious.next;
     				System.out.println("Contact deleted successfully!");
@@ -389,30 +437,31 @@ public class LinkedList<T> {
     	
         if(head==null) 
 		   System.out.println("The phonebook is empty");
-         else {
-    	
-		 boolean found = false;
-    	Node<T> tmp = head;
-    	while(tmp != null) {
+        else {
+        	boolean stop = false;
+        	boolean found = false;
+        	Node<T> tmp = head;
+        	while(tmp != null && !stop) {
     		
-    		String tmpFullName = ((Contact)tmp.data).getName();
-    		String tmpFirstName = tmpFullName.substring(0,tmpFullName.indexOf(" ")-1);
-    		if(tmpFirstName.equals(FirstName)) {
-    			found = true;
-   			 System.out.println("Contact found!");
-   			 ((Contact)tmp.data).displayContact();
- 			 System.out.println("--------------------------------------");
-    		   }
-    		tmp = tmp.next;
-    	    } if(found==false)
-   		    System.out.println("Not found!");
+        		String tmpFullName = ((Contact)tmp.data).getName();
+        		String tmpFirstName = tmpFullName.substring(0,tmpFullName.indexOf(" ")-1);
+        		if(tmpFirstName.equals(FirstName)) {
+        			found = true;
+   			 		System.out.println("Contact found!");
+   			 		((Contact)tmp.data).displayContact();
+   			 		System.out.println("--------------------------------------");
+   			 		}
+        		tmp = tmp.next;
+        		if !(tmpFirstName.equals(FirstName)) {
+        			stop = true;
+        		}
+    	    } 
+        	if(found==false)
+        		System.out.println("Not found!");
          }
-    
-       
-
-    
     	
     }
+    
     public void printEventsByContactName(String name) {
     	if(head==null)
      		System.out.println("There are no events Scheduled");
