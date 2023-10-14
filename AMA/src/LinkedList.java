@@ -185,7 +185,7 @@ public class LinkedList<T> {
         if(head==null) {
             head=newNode;
             current=newNode;
-            System.out.println("Event added successfully!");
+           // System.out.println("Event added successfully!");
             System.out.println();
         }
         else {
@@ -193,7 +193,7 @@ public class LinkedList<T> {
             if(((Event)x).getTitle().compareTo(((Event)head.data).getTitle() ) < 0) {
                 newNode.next = head;
                 head = newNode;
-                System.out.println("Event added successfully!");
+               // System.out.println("Event added successfully!");
                 System.out.println();
             }
             else {
@@ -205,7 +205,7 @@ public class LinkedList<T> {
                 }
                 pervious.next = newNode;
                 newNode.next = tmp;
-                System.out.println("Event added successfully!");
+                // System.out.println("Event added successfully!");
                 System.out.println();
              }
           }
@@ -283,8 +283,24 @@ public class LinkedList<T> {
     		}
     	}
     }
+    public void SearchByName1(String name) {
+    	if(head==null)
+    		System.out.println("The phonebook is empty");
+    	else {
+    		Node<T> tmp = head;
+    		while(tmp != null) {
+       		    if(((Contact)tmp.data).getName().equals(name)) {
+       		    	System.out.println("Contact found!");
+       		    	((Contact)tmp.data).displayContact();
+       		    	return;
+       		    }
+       		    tmp = tmp.next;
+       		    	
+    		}System.out.println("Not found!");
+    	}
+    }
 
-    public T SearchByName(String name) {
+    public T SearchByName2(String name) {
     	if(head==null)
     		return null;
     	else {
@@ -406,7 +422,7 @@ public class LinkedList<T> {
     		 while(tmp != null) {
         		 if(((Contact)tmp.data).getName().equals(name)) {
         			 found = true;
-        		    System.out.println("Event found!");
+        		    System.out.println("Contact found!");
        			    System.out.println("Contact name: "+((Contact)tmp.data).getName());
         		    ((Contact)tmp.data).getEvents().displayAllEventsInformation();
         			System.out.println("--------------------------------------");
@@ -426,12 +442,12 @@ public class LinkedList<T> {
         		 if(((Event)tmp.data).getTitle().equals(title)) {
         			 found = true;
         			 System.out.println("Event found!");
-        			 System.out.println("Event Title: "+((Event)tmp.data).getTitle());
+        			 System.out.println("Event title: "+((Event)tmp.data).getTitle());
         			 System.out.println("Conatct name: "+((Event)tmp.data).getContact().getName());
         			 System.out.println("Event date: "+((Event)tmp.data).getDate());
         			 System.out.println("Event time: "+((Event)tmp.data).getTime());
         			 System.out.println("Event location: "+((Event)tmp.data).getLocation());
-        			System.out.println("--------------------------------------");
+        			 System.out.println("--------------------------------------");
         		 }
         		    tmp = tmp.next;
         	 } if(found==false)
@@ -444,10 +460,12 @@ public class LinkedList<T> {
     		else {
     			Node<T> tmp = head;
     			while(tmp != null) {
-    				if(event.getTime().equals(((Event)tmp.data).getTime() ) && event.getDate().equals(((Event)tmp.data).getDate()) )
+    				if(event.getTime().equals(((Event)tmp.data).getTime() ) && event.getDate().equals(((Event)tmp.data).getDate()))
     					return true;
-    			}
-    			tmp = tmp.next;
+    				
+        			tmp = tmp.next;
+
+    			}    		
     		}
     		return false;
     }

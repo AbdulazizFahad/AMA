@@ -57,9 +57,9 @@ public class Phonebook {
 				System.out.println();
 				System.out.println();
 				
-				Contact c = new Contact(newName, newPhone, newEmail, newAddress, newBirthday, newNotes);
+				Contact newContact = new Contact(newName, newPhone, newEmail, newAddress, newBirthday, newNotes);
 				
-				Contacts.addContact(c);
+				Contacts.addContact(newContact);
 				
 				break;
 			
@@ -89,7 +89,7 @@ public class Phonebook {
             	
 					System.out.println("Enter the contact's Name:");
 					String name = searchCritrea.nextLine();
-					Contacts.SearchByName(name);  
+					Contacts.SearchByName1(name);  
           	  
 					break;
             
@@ -177,12 +177,16 @@ public class Phonebook {
 				String nLocation = read.nextLine();
 				
 				Event e = new Event(nTitle,nDate,nTime,nLocation);
-				Contact c1 = Contacts.SearchByName(nContactName);
-				if(c1 == null)
-					System.out.println("Sorry Contact doesn't exist");
-				if(c1 != null ) {
-					e.setContact(c1);
-					c1.getEvents().addEvent(e);
+				Contact c = Contacts.SearchByName2(nContactName);
+				boolean checkIsConflict = Events.isConflict(e);
+
+				if(c == null)
+					System.out.println("Sorry, the contact that you want to Schedule doesn't exist");
+				if(checkIsConflict == true)
+					System.out.println("Sorry, there is a conflict!");
+				if(c != null && checkIsConflict==false) {
+					e.setContact(c);
+					c.getEvents().addEvent(e);
 					Events.addEvent(e);
 					
 					
