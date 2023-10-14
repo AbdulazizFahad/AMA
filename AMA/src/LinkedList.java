@@ -1,6 +1,4 @@
-import javax.xml.crypto.Data;
 
-//
 class Node<T> {
 	
 	public T data;
@@ -105,7 +103,6 @@ public class LinkedList<T> {
     	}
     	Node<T> tmp = head;
     		while(tmp != null){
-    			String Contactname = ((Event)tmp.data).getContact().getName();
     			((Event)tmp.data).displayEvent();
     			System.out.println("-------------------------------------------------");
     			tmp = tmp.next;
@@ -168,7 +165,7 @@ public class LinkedList<T> {
         }  
     }
    
-    public boolean isUniqueForEvent(String title) {
+    public boolean isUniqueForEvent(String title) { // Check if event is unique 
     	if(head == null)
     		return true;
     	Node<T> tmp = head;
@@ -196,7 +193,7 @@ public class LinkedList<T> {
         }
         else {
 
-            if(((Event)x).getTitle().compareTo(((Event)head.data).getTitle() ) < 0) {
+            if(((Event)x).getTitle().compareTo(((Event)head.data).getTitle() ) < 0) { // if the result is negative that means X must first 
                 newNode.next = head;
                 head = newNode;
                // System.out.println("Event added successfully!");
@@ -459,17 +456,11 @@ public class LinkedList<T> {
             System.out.println("The phonebook is empty.");
             return;
         }
-
         Node<T> tmp = head;
         boolean found = false;
-
         while (tmp != null) {
-            Contact contact = (Contact)tmp.data;
-            String[] names = contact.getName().split(" ");
-            String contactFirstName = names[0];
-            
-            if (contactFirstName.equalsIgnoreCase(firstName)) {
-                contact.displayContact();
+   		    if(((Contact)tmp.data).getName().startsWith(firstName)) {
+               ((Contact)tmp.data).displayContact();
                 found = true;
                 System.out.println("-------------------------------------------------");
             }

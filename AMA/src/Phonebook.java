@@ -211,7 +211,7 @@ public class Phonebook {
 				    System.out.print("Enter your choice: ");
 				    
 				        int eventSearchChoice = readInfo.nextInt();
-				                                                                       // Consume the newline character
+				                                                                       
 				        switch (eventSearchChoice) {
 						case 1:
 					        System.out.print("Enter the contact's name: ");
