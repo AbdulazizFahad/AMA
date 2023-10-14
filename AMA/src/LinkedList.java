@@ -105,34 +105,7 @@ public class LinkedList<T> {
     			tmp = tmp.next;
     		}    	
     }
-    public void PrintLinkedListOfContacts(LinkedList<Contact> C) {
-    	
-    	if(C.head == null) 
-    		System.out.println("List is empty");
-    	else {
-    		Node<Contact> tmp = C.head;
-    		while(tmp!=null) {
-    			tmp.data.displayContact(); // display Contacts
-    			tmp.data.getEventsInContact().displayAllEventsInformation(); // display all events with the contact 
-    			System.out.println("-------------------------------------------------");
-    			tmp = tmp.next;
-    		}
-    	}
-    }
-    public void PrintLinkedListOfEvents() { // Come back to make sure its correct 
-    	
-    	if(head == null)
-    		System.out.println("List is empty");
-    	else {
-    		Node<T> tmp = head;
-    		while(tmp != null) {
-    			((Event)tmp.data).displayEvent(); // display Events
-    			((Event)tmp.data).getContactsInEvent().displayAllContactsInformation(); // display all contacts with the event
-			    System.out.println("-------------------------------------------------");
-			    tmp = tmp.next;
-    		}
-    	}
-    }
+    
     
     public boolean isUniqueForContact(T x) {
     	if(head == null)
@@ -204,20 +177,16 @@ public class LinkedList<T> {
 
         if(isUniqueForEvent(((Event)x).getTitle())==false) {
             System.out.println("Event already exists!");
-            System.out.println();
-            return;
         }
         else {
         	
         Node<T> newNode = new Node<T>(x);
-        
+ 
         if(head==null) {
-        	
             head=newNode;
             current=newNode;
             System.out.println("Event added successfully!");
             System.out.println();
-            return;
         }
         else {
 
@@ -226,7 +195,6 @@ public class LinkedList<T> {
                 head = newNode;
                 System.out.println("Event added successfully!");
                 System.out.println();
-                return;
             }
             else {
                 Node<T> tmp = head;
@@ -255,7 +223,6 @@ public class LinkedList<T> {
     		
 			if(((Contact)head.data).getName().equalsIgnoreCase(name)) {
     			head = head.next;
-    			
     			System.out.println("Contact deleted successfully!");
     			System.out.println();
     			return;
@@ -317,21 +284,21 @@ public class LinkedList<T> {
     	}
     }
 
-    public Contact SearchByName(String name) {
-    	
+    public T SearchByName(String name) {
     	if(head==null)
     		return null;
     	else {
     		Node<T> tmp = head;
     		while(tmp != null) {
-       		    if(((Contact)tmp.data).getName().equals(name)) {
-       		    	return (Contact)tmp.data;
+       		    if(((Contact)tmp.data).getName().equalsIgnoreCase(name)) {
+       		    	return tmp.data;
        		    }
         		tmp = tmp.next;
     		} 
     		return null;
     	}
     }
+    
     public void SearchByPhoneNumber(String PhoneNumber) {
     	if(head==null)
     		System.out.println("The phonebook is empty");
@@ -430,27 +397,28 @@ public class LinkedList<T> {
     
     	
     }
-    public void printEventsByName(String name) {
+    public void printEventsByContactName(String name) {
     	if(head==null)
-     		System.out.println("The phonebook is empty");
+     		System.out.println("There are no events Scheduled");
     	 else {
     		 boolean found = false;
     		 Node<T> tmp = head;
     		 while(tmp != null) {
         		 if(((Contact)tmp.data).getName().equals(name)) {
         			 found = true;
-        			 System.out.println("Contact found!");
-        			((Contact)tmp.data).getEventsInContact().displayAllEventsInformation();
+        		    System.out.println("Event found!");
+       			    System.out.println("Contact name: "+((Contact)tmp.data).getName());
+        		    ((Contact)tmp.data).getEvents().displayAllEventsInformation();
         			System.out.println("--------------------------------------");
         		 }
         		    tmp = tmp.next;
         	 } if(found==false)
-            	 System.out.println("Contact Not found!");
+            	 System.out.println("There are no events found!");
     	 }    	 
     }
     public void printEventsByTitle(String title) {
     	if(head==null)
-     		System.out.println("The phonebook is empty");
+     		System.out.println("There are no events Scheduled");
     	 else {
     		 boolean found = false;
     		 Node<T> tmp = head;
@@ -458,7 +426,11 @@ public class LinkedList<T> {
         		 if(((Event)tmp.data).getTitle().equals(title)) {
         			 found = true;
         			 System.out.println("Event found!");
-        			((Event)tmp.data).getContactsInEvent().displayAllContactsInformation();;
+        			 System.out.println("Event Title: "+((Event)tmp.data).getTitle());
+        			 System.out.println("Conatct name: "+((Event)tmp.data).getContact().getName());
+        			 System.out.println("Event date: "+((Event)tmp.data).getDate());
+        			 System.out.println("Event time: "+((Event)tmp.data).getTime());
+        			 System.out.println("Event location: "+((Event)tmp.data).getLocation());
         			System.out.println("--------------------------------------");
         		 }
         		    tmp = tmp.next;
@@ -466,8 +438,7 @@ public class LinkedList<T> {
             	 System.out.println("Event Not found!");
     	 }    	 
     }
-    public boolean isConflict(Contact contact,Event event) {
-    	
+    public boolean isConflict(Event event) {
     		if(head == null)
     			return false;
     		else {
@@ -480,29 +451,4 @@ public class LinkedList<T> {
     		}
     		return false;
     }
-    public void ScheduleEvent(Contact contact,Event event) {
-    	if(contact == null) {
-    		System.out.println("You can't Schedule, The contact doesn't exist");
-    		return;
-    	}
-    	if(contact != null && isConflict(contact, event)==false ) {
-    		
-    		contact.getEventsInContact().addEvent(event);
-    		event.getContactsInEvent().addContact(contact);
-    		addEvent((T)event);
-    		
-    		System.out.println("Event scheduled successfully!");
-    	}
-    	else {
-    		if(isConflict(contact, event) == true)
-    			System.out.println("Sorry there is conflict!");
-    		if(contact == null)
-    			System.out.println("Sorry Contact doesn't exist");
-    	}
-    }
-    	
-    
-    	
-    
-    
 }

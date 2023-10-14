@@ -2,14 +2,16 @@ import java.util.Scanner;
 
     public class Contact implements Comparable<String>{
     	
+	
 	private String name;
 	private String phoneNumber;
 	private String email;
 	private String address;     // Contact informations
 	private String birthday;
 	private String notes;
-	private LinkedList<Event> eventsInContact = new LinkedList<Event>(); // All event that has been schedule with this contact
+	private LinkedList <Event> events = new LinkedList<Event>(); // All event that has been schedule with this contact
 
+	
 	public Contact(String name, String phoneNumber, String email, String address, String birthday, String notes) {
 		
 		this.name = name;
@@ -18,6 +20,12 @@ import java.util.Scanner;
 		this.address = address;
 		this.birthday = birthday;
 		this.notes = notes;
+	}
+	public LinkedList<Event> getEvents() {
+		return events;
+	}
+	public void setEvents(LinkedList<Event> events) {
+		this.events = events;
 	}
 	public String getName() {
 		return name;
@@ -55,12 +63,7 @@ import java.util.Scanner;
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-	public LinkedList<Event> getEventsInContact() {
-		return eventsInContact;
-	}
-	public void setEventsInContact(LinkedList<Event> eventsInContact) {
-		this.eventsInContact = eventsInContact;
-	}
+	
 	public void displayContact() {
 		 
 		System.out.println("Name: "+name);
