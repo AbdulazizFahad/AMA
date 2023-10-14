@@ -56,8 +56,8 @@ public class Event implements Comparable<String> {
 
 	public void displayEvent() {
 		System.out.println("Event Title: "+title);
-		System.out.println("Event Date: "+date);
-		System.out.println("Event Time: "+time);
+		System.out.println("Event Date(MM/DD/YYYY): "+date);
+		System.out.println("Event Time(HH:MM): "+time);
 		System.out.println("Event Location: "+location);
 
 	}

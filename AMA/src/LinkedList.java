@@ -1,3 +1,5 @@
+import javax.xml.crypto.Data;
+
 //
 class Node<T> {
 	
@@ -88,7 +90,7 @@ public class LinkedList<T> {
     }
     public void displayAllContactsInformation() {
     	if(head == null)
-    		System.out.println("List is empty");
+    		System.out.println("The phonebook is empty");
     	    System.out.println();
     	Node<T> tmp = head;
     		while(tmp != null) {
@@ -98,8 +100,12 @@ public class LinkedList<T> {
     		}    	
     }
     public void displayAllEventsInformation() {
+    	if(head == null) {
+    		System.out.println("No Events");
+    	}
     	Node<T> tmp = head;
-    		while(tmp != null) {
+    		while(tmp != null){
+    			String Contactname = ((Event)tmp.data).getContact().getName();
     			((Event)tmp.data).displayEvent();
     			System.out.println("-------------------------------------------------");
     			tmp = tmp.next;
@@ -176,7 +182,7 @@ public class LinkedList<T> {
     public void addEvent(T x) {
 
         if(isUniqueForEvent(((Event)x).getTitle())==false) {
-            System.out.println("Event already exists!");
+            System.out.println();
         }
         else {
         	
@@ -212,38 +218,6 @@ public class LinkedList<T> {
         }  
     }
     
-    public void deleteEvent(String eventTitle) {
-    	
-    	if(head==null) {
-    		System.out.println("There are no events to delete!");
-    		return;
-    	}
-    	
-    	if(((event)head.data).getTitle().equalsIgnoreCase(eventTitle))
-    	{
-    		head = head.next;
-			System.out.println("Event deleted successfully!");
-			System.out.println();
-			return;
-    	}
-    	else {
-    		Node<T> tmp = head;
-    		Node<T> pervious = null;
-    		while(tmp != null ) {
-    			if(((Event)tmp.data).getTitle().equalsIgnoreCase(eventTitle)) {
-    				pervious.next = tmp.next;
-    				tmp = pervious.next;
-    				System.out.println("Event deleted successfully!");
-    				System.out.println();
-    				return;
-    			}
-    			pervious = tmp;
-    			tmp = tmp.next;
-    		      }
-		       System.out.println("Not found");
-    		}    	
-    }
-    
     public void deleteContactByName(String name) {
     	    	
     	if(head==null) {
@@ -253,11 +227,7 @@ public class LinkedList<T> {
 
     	else {
     		
-			if(((Contact)head.data).getName().equalsIgnoreCase(name)) {
-			while (Event)head.event != null) {
-				deleteEvent((Event)head.event.getTitle());
-				head = head.next;
-			}
+			if(((Contact)head.data).getName().equals(name)) {
     			head = head.next;
     			System.out.println("Contact deleted successfully!");
     			System.out.println();
@@ -269,11 +239,7 @@ public class LinkedList<T> {
     		Node<T> tmp = head;
     		Node<T> pervious = null;
     		while(tmp != null ) {
-    			if(((Contact)tmp.data).getName().equalsIgnoreCase(name)) {
-    				while (Event)head.event != null) {
-    					deleteEvent((Event)head.event.getTitle());
-    					head = head.next;
-    				}
+    			if(((Contact)tmp.data).getName().equals(name)) {
     				pervious.next = tmp.next;
     				tmp = pervious.next;
     				System.out.println("Contact deleted successfully!");
@@ -297,12 +263,8 @@ public class LinkedList<T> {
 
     	else {
     		
-			if(((Contact)head.data).getName().equalsIgnoreCase(phoneNumber)) {
-				while (Event)head.event != null) {
-					deleteEvent((Event)head.event.getTitle());
-					head = head.next;
-				}
-				head = head.next;
+			if(((Contact)head.data).getName().equals(phoneNumber)) {
+    			head = head.next;
     			System.out.println("Contact deleted successfully!");
     			System.out.println();
     			return;
@@ -313,11 +275,7 @@ public class LinkedList<T> {
     		Node<T> tmp = head;
     		Node<T> pervious = null;
     		while(tmp != null ) {
-    			if(((Contact)tmp.data).getName().equalsIgnoreCase(phoneNumber)) {
-    				while (Event)head.event != null) {
-    					deleteEvent((Event)head.event.getTitle());
-    					head = head.next;
-    				}
+    			if(((Contact)tmp.data).getName().equals(phoneNumber)) {
     				pervious.next = tmp.next;
     				tmp = pervious.next;
     				System.out.println("Contact deleted successfully!");
@@ -331,6 +289,69 @@ public class LinkedList<T> {
     		}
     	}
     }
+    
+    public void deleteEventByName(String name) {
+    	
+        Node<T> tmp = head;
+        Node<T> previous = null;
+        boolean delete = false;
+
+        if (head == null) {
+            System.out.println("The Phonebook is empty, can not delete.");
+            return;
+        }
+
+        while (tmp != null) {
+            if (((Event) tmp.data).getContact().getName().equals(name)) {
+                if (previous == null) {
+                    head = tmp.next;
+                } else {
+                    previous.next = tmp.next;
+                }
+                delete = true;
+                tmp = tmp.next;
+            } else {
+                previous = tmp;
+                tmp = tmp.next;
+            }
+        }
+        if(!delete) {
+        System.out.println("There is no events Scheduled with this contact ");
+        }
+    }
+ public void deleteEventByPhone(String phone) {
+    	
+        Node<T> tmp = head;
+        Node<T> previous = null;
+        boolean delete = false;
+
+        if (head == null) {
+            System.out.println("The Phonebook is empty, can not delete the contact");
+            return;
+        }
+
+        while (tmp != null) {
+            if (((Event) tmp.data).getContact().getPhoneNumber().equals(phone)) {
+                if (previous == null) {
+                    head = tmp.next;
+                } else {
+                    previous.next = tmp.next;
+                }
+                delete = true;
+                tmp = tmp.next;
+            } else {
+                previous = tmp;
+                tmp = tmp.next;
+            }
+        }
+        if(!delete) {
+        System.out.println("There is no events Scheduled with this contact ");
+        }
+    }
+ 
+
+
+    
     public void SearchByName1(String name) {
     	if(head==null)
     		System.out.println("The phonebook is empty");
@@ -354,7 +375,7 @@ public class LinkedList<T> {
     	else {
     		Node<T> tmp = head;
     		while(tmp != null) {
-       		    if(((Contact)tmp.data).getName().equalsIgnoreCase(name)) {
+       		    if(((Contact)tmp.data).getName().equals(name)) {
        		    	return tmp.data;
        		    }
         		tmp = tmp.next;
@@ -433,35 +454,34 @@ public class LinkedList<T> {
         		 System.out.println("Not found!");
     	 }    	 
     }
-    public void SearchByFirstName(String FirstName) {
-    	
-        if(head==null) 
-		   System.out.println("The phonebook is empty");
-        else {
-        	boolean stop = false;
-        	boolean found = false;
-        	Node<T> tmp = head;
-        	while(tmp != null && !stop) {
-    		
-        		String tmpFullName = ((Contact)tmp.data).getName();
-        		String tmpFirstName = tmpFullName.substring(0,tmpFullName.indexOf(" ")-1);
-        		if(tmpFirstName.equals(FirstName)) {
-        			found = true;
-   			 		System.out.println("Contact found!");
-   			 		((Contact)tmp.data).displayContact();
-   			 		System.out.println("--------------------------------------");
-   			 		}
-        		tmp = tmp.next;
-        		if !(tmpFirstName.equals(FirstName)) {
-        			stop = true;
-        		}
-    	    } 
-        	if(found==false)
-        		System.out.println("Not found!");
-         }
-    	
+    public void searchByFirstName(String firstName) {
+        if (head == null) {
+            System.out.println("The phonebook is empty.");
+            return;
+        }
+
+        Node<T> tmp = head;
+        boolean found = false;
+
+        while (tmp != null) {
+            Contact contact = (Contact)tmp.data;
+            String[] names = contact.getName().split(" ");
+            String contactFirstName = names[0];
+            
+            if (contactFirstName.equalsIgnoreCase(firstName)) {
+                contact.displayContact();
+                found = true;
+                System.out.println("-------------------------------------------------");
+            }
+
+            tmp = tmp.next;
+        }
+
+        if (!found) {
+            System.out.println("No contacts with the first name found");
+        }
     }
-    
+
     public void printEventsByContactName(String name) {
     	if(head==null)
      		System.out.println("There are no events Scheduled");
@@ -474,7 +494,6 @@ public class LinkedList<T> {
         		    System.out.println("Contact found!");
        			    System.out.println("Contact name: "+((Contact)tmp.data).getName());
         		    ((Contact)tmp.data).getEvents().displayAllEventsInformation();
-        			System.out.println("--------------------------------------");
         		 }
         		    tmp = tmp.next;
         	 } if(found==false)
@@ -483,7 +502,7 @@ public class LinkedList<T> {
     }
     public void printEventsByTitle(String title) {
     	if(head==null)
-     		System.out.println("There are no events Scheduled");
+     		System.out.println("There are no events Scheduled in the phonebook");
     	 else {
     		 boolean found = false;
     		 Node<T> tmp = head;
@@ -500,7 +519,7 @@ public class LinkedList<T> {
         		 }
         		    tmp = tmp.next;
         	 } if(found==false)
-            	 System.out.println("Event Not found!");
+            	 System.out.println("There are no events found!");
     	 }    	 
     }
     public boolean isConflict(Event event) {

@@ -150,13 +150,14 @@ public class Phonebook {
 					System.out.print("Enter Name of contact: ");
 					String deleteByName = deleteContact.nextLine();
 					Contacts.deleteContactByName(deleteByName);
-					//Contacts.deleteContactByName(deleteByName);
+					Events.deleteEventByName(deleteByName);
 					break;
 			
 				case 2:
 					System.out.print("Enter Phone number of contact: ");
 					String deleteByPhone = deleteContact.nextLine();
 					Contacts.deleteContactByPhoneNumber(deleteByPhone);
+					Events.deleteEventByPhone(deleteByPhone);
 					break;
 				}
 			
@@ -165,32 +166,34 @@ public class Phonebook {
 			
 			case 4:
 				Scanner read = new Scanner(System.in);
-				System.out.println("Enter Event Title");
+				System.out.println("Enter Event Title: ");
 				String nTitle = read.nextLine();
-				System.out.println("Enter Contact name");
+				System.out.println("Enter Contact name: ");
 				String nContactName = read.nextLine();
-				System.out.println("Enter  date of event");
+				System.out.println("Enter  Date (MM/DD/YYYY): ");
 				String nDate = read.nextLine();
-				System.out.println("Enter the time");
+				System.out.println("Enter the Time (HH:MM): ");
 				String nTime = read.nextLine();
-				System.out.println("Enter Location");
+				System.out.println("Enter Location: ");
 				String nLocation = read.nextLine();
 				
 				Event e = new Event(nTitle,nDate,nTime,nLocation);
 				Contact c = Contacts.SearchByName2(nContactName);
 				boolean checkIsConflict = Events.isConflict(e);
+				boolean checkUnique = Events.isUniqueForEvent(nTitle);
 
 				if(c == null)
-					System.out.println("Sorry, the contact that you want to Schedule doesn't exist");
+					System.out.println("The contact that you want to Schedule does not exist");
 				if(checkIsConflict == true)
-					System.out.println("Sorry, there is a conflict!");
-				if(c != null && checkIsConflict==false) {
+					System.out.println("There is a conflict!");
+				if(checkUnique == false)
+					System.out.println("The event already exsits");
+				if(c != null && checkIsConflict == false&& checkUnique == true ) {
 					e.setContact(c);
 					c.getEvents().addEvent(e);
 					Events.addEvent(e);
-					
-					
 					System.out.println("Event has been Schedule succssfully!");
+					System.out.println();
 				}
 				
 				break;
@@ -220,22 +223,19 @@ public class Phonebook {
 					        String eventTitle = readInfo2.nextLine();
 					        Events.printEventsByTitle(eventTitle);
 					        break;
-						
-						
-				       
-						default:
-				           System.out.println("Invalid choice. Please enter 1 or 2.");
-				           break;
 				        }
+				        break;
 
 			case 6: 
-				
+				Scanner readFirst = new Scanner(System.in);
+				System.out.println("Enter the first name:");
+				String firstName = readFirst.nextLine();
+				Contacts.searchByFirstName(firstName);
 				break;
 			
 			case 7: 
 				
-				if(Events.isEmpty())
-					System.out.println("There is No Events");
+				
 				Events.displayAllEventsInformation();
 				break;
 				
