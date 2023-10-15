@@ -21,31 +21,31 @@ public class LinkedList<T> {
 		current = null;
 	}
 	
-	public boolean Full() {      // Check if the LinkedList is full (We know it's never FULL :) )
+	public boolean Full() {    // Check if the LinkedList is full (We know it's never FULL :) )
 	
 		return false;
 	}
 	
-	public boolean isEmpty() {     //Checking if the LinkedList is empty
+	public boolean isEmpty() {  //Checking if the LinkedList is empty
         return head == null;
     }
 
-    public boolean Last() {  //Checking if the current node is the last one on the LinkedList
+    public boolean Last() {    //Checking if the current node is the last one on the LinkedList
         return current.next == null;
     }
-    public void findFirst() { // making the current point on the first node
+    public void findFirst() {   // making the current point on the first node
         current = head;
     }
 
-    public void findNext() { // move the current to the next node
+    public void findNext() {    // move the current to the next node
         current = current.next;
     }
 
-    public T retrieve()    {  // obtain the current node data 
+    public T retrieve()    {    // obtain the current node data 
         return current.data;
     }
 
-    public void update(T val) { // updating the node data
+    public void update(T val) {// updating the node data
         current.data = val;
     }
 
@@ -93,7 +93,7 @@ public class LinkedList<T> {
     	Node<T> tmp = head;
     		while(tmp != null) {
     			((Contact)tmp.data).displayContact();
-    			System.out.println("-------------------------------------------------");
+    			System.out.println("---------------------------------------");
     			tmp = tmp.next;
     		}    	
     }
@@ -104,7 +104,7 @@ public class LinkedList<T> {
     	Node<T> tmp = head;
     		while(tmp != null){
     			((Event)tmp.data).displayEvent();
-    			System.out.println("-------------------------------------------------");
+    			System.out.println("---------------------------------------");
     			tmp = tmp.next;
     		}    	
     }
@@ -177,14 +177,8 @@ public class LinkedList<T> {
 		return true;
     }
     public void addEvent(T x) {
-
-        if(isUniqueForEvent(((Event)x).getTitle())==false) {
-            System.out.println();
-        }
-        else {
-        	
+    	
         Node<T> newNode = new Node<T>(x);
- 
         if(head==null) {
             head=newNode;
             current=newNode;
@@ -210,10 +204,9 @@ public class LinkedList<T> {
                 newNode.next = tmp;
                 // System.out.println("Event added successfully!");
                 System.out.println();
-             }
-          }
-        }  
-    }
+            }
+        }   
+    } 
     
     public void deleteContactByName(String name) {
     	    	
@@ -408,7 +401,7 @@ public class LinkedList<T> {
     			 found = true;
     			 System.out.println("Contact found!");
     			((Contact)tmp.data).displayContact();
-    			System.out.println("--------------------------------------");
+    			System.out.println("-----------------------------------");
     		 }
     		    tmp = tmp.next;
     	 } if(found==false)
@@ -426,7 +419,7 @@ public class LinkedList<T> {
     			 found = true;
     			 System.out.println("Contact found!");
     			((Contact)tmp.data).displayContact();
-    			System.out.println("--------------------------------------");
+    			System.out.println("------------------------------------");
     		 }
     		    tmp = tmp.next;
     	 } if(found==false)
@@ -444,38 +437,16 @@ public class LinkedList<T> {
         			 found = true;
         			 System.out.println("Contact found!");
         			((Contact)tmp.data).displayContact();
-        			System.out.println("--------------------------------------");
+        			System.out.println("----------------------------------");
         		 }
         		    tmp = tmp.next;
         	 } if(found==false)
         		 System.out.println("Not found!");
     	 }    	 
     }
-    public void searchByFirstName(String firstName) {
-        if (head == null) {
-            System.out.println("The phonebook is empty.");
-            return;
-        }
-        Node<T> tmp = head;
-        boolean found = false;
-        while (tmp != null) {
-   		    if(((Contact)tmp.data).getName().toLowerCase().startsWith(firstName.toLowerCase())) {
-               ((Contact)tmp.data).displayContact();
-                found = true;
-                System.out.println("-------------------------------------------------");
-            }
-
-            tmp = tmp.next;
-        }
-
-        if (!found) {
-            System.out.println("No contacts with the first name found");
-        }
-    }
-
     public void printEventsByContactName(String name) {
     	if(head==null)
-     		System.out.println("There are no events Scheduled");
+     		System.out.println("The phonebook is empty");
     	 else {
     		 boolean found = false;
     		 Node<T> tmp = head;
@@ -488,7 +459,7 @@ public class LinkedList<T> {
         		 }
         		    tmp = tmp.next;
         	 } if(found==false)
-            	 System.out.println("There are no events found!");
+            	 System.out.println("The contact does not exsist");
     	 }    	 
     }
     public void printEventsByTitle(String title) {
@@ -506,7 +477,7 @@ public class LinkedList<T> {
         			 System.out.println("Event date: "+((Event)tmp.data).getDate());
         			 System.out.println("Event time: "+((Event)tmp.data).getTime());
         			 System.out.println("Event location: "+((Event)tmp.data).getLocation());
-        			 System.out.println("--------------------------------------");
+        			 System.out.println("-----------------------------------");
         		 }
         		    tmp = tmp.next;
         	 } if(found==false)
@@ -521,11 +492,9 @@ public class LinkedList<T> {
     			while(tmp != null) {
     				if(event.getTime().equalsIgnoreCase(((Event)tmp.data).getTime() ) && event.getDate().equalsIgnoreCase(((Event)tmp.data).getDate()))
     					return true;
-    				
-        			tmp = tmp.next;
-
+        			    tmp = tmp.next;
     			}    		
     		}
-    		return false;
+    		   return false;
     }
 }

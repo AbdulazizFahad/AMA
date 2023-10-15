@@ -9,7 +9,7 @@ import java.util.Scanner;
 	private String address;     // Contact informations
 	private String birthday;
 	private String notes;
-	private LinkedList <Event> events = new LinkedList<Event>(); // All event that has been schedule with this contact
+	private LinkedList<Event> events = new LinkedList<Event>(); // All event that has been schedule with this contact
 
 	
 	public Contact(String name, String phoneNumber, String email, String address, String birthday, String notes) {

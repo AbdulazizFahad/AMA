@@ -1,11 +1,66 @@
 import java.util.Scanner;
 public class Phonebook {
+	
+	static LinkedList<Contact> Contacts = new LinkedList<Contact>(); // All Contacts 
+	static LinkedList<Event> Events = new LinkedList<Event>(); // All Events 
 
+	public static void  searchByFirstName(String firstName) {
+		if(Contacts.isEmpty()) {
+            System.out.println("The phonebook is empty.");
+		}
+		else {
+			Contacts.findFirst();
+			boolean found = false;
+			while(!Contacts.Last()) {
+			Contact tmp = Contacts.retrieve();
+			 if(tmp.getName().toLowerCase().startsWith(firstName)) {
+				 found = true;
+				 tmp.displayContact();
+				 System.out.println("--------------------------------");
+			 }
+			 Contacts.findNext();
+			}
+			Contact tmp = Contacts.retrieve();
+			if(tmp.getName().toLowerCase().startsWith(firstName)) {
+				 found = true;
+				 tmp.displayContact();
+				 System.out.println("--------------------------------");
+			}
+		if(found==false)
+			System.out.println("No Contacts with this First name found");
+		}
+		
+	}
+	public static void printAllContactsShareEvent(String title) {
+		if(Contacts.isEmpty()) {
+            System.out.println("The phonebook is empty.");
+		}
+		else {
+			Events.findFirst();
+			boolean found = false;
+			while(!Events.Last()) {
+				Event tmp = Events.retrieve();
+			 if(tmp.getTitle().equalsIgnoreCase(title)) {
+				 found = true;
+				 tmp.getContact().displayContact();
+				 System.out.println("--------------------------------");
+			 }
+			 Events.findNext();
+			}
+			Event tmp = Events.retrieve();
+			if(tmp.getTitle().equalsIgnoreCase(title)) {
+				 found = true;
+				 tmp.getContact().displayContact();
+				 System.out.println("--------------------------------");
+			}
+		if(found==false)
+			System.out.println("No Contacts with this title found");
+		}
+	}
+	
 	public static void main(String[] args) {
 		
 
-	LinkedList<Contact> Contacts = new LinkedList<Contact>(); // All Contacts 
-	LinkedList<Event> Events = new LinkedList<Event>(); // All 
 	Event e1 = new Event("Lancuh w", "1/1/2022","12:00","Riyadh");
 	Event e2 = new Event("Lancuh f", "1/1/2022","12:00","Riyadh");
 	Event e3 = new Event("Lancuh f", "1/1/2022","12:00","Riyadh");
@@ -180,15 +235,11 @@ public class Phonebook {
 				Event e = new Event(nTitle,nDate,nTime,nLocation);
 				Contact c = Contacts.SearchByName2(nContactName);
 				boolean checkIsConflict = Events.isConflict(e);
-				boolean checkUnique = Events.isUniqueForEvent(nTitle);
-
 				if(c == null)
 					System.out.println("The contact that you want to Schedule does not exist");
 				if(checkIsConflict == true)
 					System.out.println("There is a conflict!");
-				if(checkUnique == false)
-					System.out.println("The event already exsits");
-				if(c != null && checkIsConflict == false&& checkUnique == true ) {
+				if(c != null && checkIsConflict == false) {
 					e.setContact(c);
 					c.getEvents().addEvent(e);
 					Events.addEvent(e);
@@ -227,10 +278,10 @@ public class Phonebook {
 				        break;
 
 			case 6: 
-				Scanner readFirst = new Scanner(System.in);
+				Scanner readFirstName = new Scanner(System.in);
 				System.out.println("Enter the first name:");
-				String firstName = readFirst.nextLine();
-				Contacts.searchByFirstName(firstName);
+				String firstName = readFirstName.nextLine();
+				searchByFirstName(firstName);
 				break;
 			
 			case 7: 
