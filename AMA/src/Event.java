@@ -43,16 +43,17 @@ public class Event implements Comparable<String> {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	public void displayEvent() {
+	public void displayEvent() { 
 		System.out.println("Event Title: "+title);
-		System.out.println("Event Date(MM/DD/YYYY): "+date);
+		System.out.println("Event Date(MM/DD/YYYY): "+date);  // This method display all event's informations. 
 		System.out.println("Event Time(HH:MM): "+time);
 		System.out.println("Event Location: "+location);
 
 	}
 
 	@Override
-	public int compareTo(String title) { // Same process in compareTo in Contact 
-		return this.title.compareTo(title);
+	public int compareTo(String title) {    //## We will use this method in Sorting to know which Object must be First 
+		return this.title.compareTo(title); //## This method Will
+		                                    //## For Example "a".compareTo("z"); --> Will return -25 since z is greater than a in the decimal value
 	} 	
 }

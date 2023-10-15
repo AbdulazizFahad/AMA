@@ -1,24 +1,26 @@
 import java.util.Scanner;
+
 public class Phonebook {
+
 	
 	static LinkedList<Contact> Contacts = new LinkedList<Contact>(); // All Contacts 
 	static LinkedList<Event> Events = new LinkedList<Event>(); // All Events 
 
 	public static void  searchByFirstName(String firstName) {
-		if(Contacts.isEmpty()) {
+		if(Contacts.isEmpty()) {// list is empty 
             System.out.println("The phonebook is empty.");
 		}
 		else {
-			Contacts.findFirst();
+			Contacts.findFirst(); // put the current at the head
 			boolean found = false;
-			while(!Contacts.Last()) {
+			while(!Contacts.Last()) { 
 			Contact tmp = Contacts.retrieve();
-			 if(tmp.getName().toLowerCase().startsWith(firstName)) {
+			 if(tmp.getName().toLowerCase().startsWith(firstName)) { // check if the current name is start with the first name provided 
 				 found = true;
-				 tmp.displayContact();
+				 tmp.displayContact(); // display if it has same first name 
 				 System.out.println("--------------------------------");
 			 }
-			 Contacts.findNext();
+			 Contacts.findNext(); // to check the last element must move the current to the last 
 			}
 			Contact tmp = Contacts.retrieve();
 			if(tmp.getName().toLowerCase().startsWith(firstName)) {
@@ -32,20 +34,20 @@ public class Phonebook {
 		
 	}
 	public static void printAllContactsShareEvent(String title) {
-		if(Contacts.isEmpty()) {
+		if(Contacts.isEmpty()) { // list is empty
             System.out.println("The phonebook is empty.");
 		}
 		else {
-			Events.findFirst();
-			boolean found = false;
+			Events.findFirst(); // put the current at the head
+			boolean found = false; 
 			while(!Events.Last()) {
 				Event tmp = Events.retrieve();
-			 if(tmp.getTitle().equalsIgnoreCase(title)) {
+			 if(tmp.getTitle().equalsIgnoreCase(title)) { // check the event with same provided
 				 found = true;
-				 tmp.getContact().displayContact();
+				 tmp.getContact().displayContact(); // display contact information 
 				 System.out.println("--------------------------------");
 			 }
-			 Events.findNext();
+			 Events.findNext(); // to check the last element must move the current to the last 
 			}
 			Event tmp = Events.retrieve();
 			if(tmp.getTitle().equalsIgnoreCase(title)) {
@@ -307,10 +309,4 @@ public class Phonebook {
 	}
 		
 }
-
-
-		
-	
- 
-
 	
