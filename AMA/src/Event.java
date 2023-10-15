@@ -66,9 +66,4 @@ public class Event implements Comparable<String> {
 	public int compareTo(String title) { // Same process in compareTo in Contact 
 		return this.title.compareTo(title);
 	} 
-	
-	
-
-	
-	
 }

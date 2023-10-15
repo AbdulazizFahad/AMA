@@ -61,6 +61,7 @@ public class Phonebook {
 			case 1:
 				
 				Scanner add = new Scanner(System.in);
+				System.out.println();
 				System.out.print("Enter the contact's name: ");
 				String newName = add.nextLine();
 				System.out.print("Enter the contact's phone number: ");
@@ -83,6 +84,7 @@ public class Phonebook {
 				break;
 			
 			case 2: 
+				System.out.println();
 				System.out.println("Enter search criteria:");
 				System.out.println("1. Name");
 				System.out.println("2. Phone Number");
@@ -152,6 +154,7 @@ public class Phonebook {
 					break;
             
 				}
+				System.out.println();
 				break;
 			
 			
@@ -159,6 +162,7 @@ public class Phonebook {
 				Scanner delete = new Scanner(System.in);
 				Scanner deleteContact = new Scanner(System.in);
 				
+				System.out.println();
 				System.out.println("Enter delete criteria:");
 				System.out.println("1. Delete by name");
 				System.out.println("2. Delete by phone number");
@@ -186,6 +190,7 @@ public class Phonebook {
 				switch(deleteChoice) {
 				
 				case 1:
+					System.out.println();
 					System.out.print("Enter Name of contact: ");
 					String deleteByName = deleteContact.nextLine();
 					Contacts.deleteContactByName(deleteByName);
@@ -193,6 +198,7 @@ public class Phonebook {
 					break;
 			
 				case 2:
+					System.out.println();
 					System.out.print("Enter Phone number of contact: ");
 					String deleteByPhone = deleteContact.nextLine();
 					Contacts.deleteContactByPhoneNumber(deleteByPhone);
@@ -205,15 +211,16 @@ public class Phonebook {
 			
 			case 4:
 				Scanner read = new Scanner(System.in);
-				System.out.println("Enter Event Title: ");
+				System.out.println();
+				System.out.print("Enter Event Title: ");
 				String nTitle = read.nextLine();
-				System.out.println("Enter Contact name: ");
+				System.out.print("Enter Contact name: ");
 				String nContactName = read.nextLine();
-				System.out.println("Enter  Date (MM/DD/YYYY): ");
+				System.out.print("Enter  Date (MM/DD/YYYY): ");
 				String nDate = read.nextLine();
-				System.out.println("Enter the Time (HH:MM): ");
+				System.out.print("Enter the Time (HH:MM): ");
 				String nTime = read.nextLine();
-				System.out.println("Enter Location: ");
+				System.out.print("Enter Location: ");
 				String nLocation = read.nextLine();
 				
 				Event e = new Event(nTitle,nDate,nTime,nLocation);
@@ -221,13 +228,21 @@ public class Phonebook {
 				boolean checkIsConflict = Events.isConflict(e);
 				boolean checkUnique = Events.isUniqueForEvent(nTitle);
 
-				if(c == null)
+				if(c == null) {
+					System.out.println();
 					System.out.println("The contact that you want to Schedule does not exist");
-				if(checkIsConflict == true)
+				}	
+				if(checkIsConflict == true) {
+					System.out.println();
 					System.out.println("There is a conflict!");
-				if(checkUnique == false)
+					System.out.println();
+				}
+				if(checkUnique == false) {
+					System.out.println();
 					System.out.println("The event already exsits");
-				if(c != null && checkIsConflict == false&& checkUnique == true ) {
+					System.out.println();
+				}
+				if(c != null && checkIsConflict == false && checkUnique == true ) {
 					e.setContact(c);
 					c.getEvents().addEvent(e);
 					Events.addEvent(e);
@@ -242,6 +257,7 @@ public class Phonebook {
 				Scanner readInfo = new Scanner(System.in);
 				Scanner readInfo2 = new Scanner(System.in);
 
+				System.out.println();
 				System.out.println("Enter search criteria");
 				System.out.println("1. Contact name");
 				System.out.println("2. Event title");
@@ -259,7 +275,7 @@ public class Phonebook {
 				        } else {
 				            System.out.println("Invalid choice. Please enter 1 or 2.");
 				        }
-				    } catch (InputMismatchException e) {
+				    } catch (InputMismatchException e11) {
 				        System.out.println("Invalid input for choice. Please enter a valid choice (1 or 2).");
 				        input.nextLine(); // Clear the invalid input
 				    }
@@ -269,11 +285,13 @@ public class Phonebook {
 					case 1:
 						System.out.print("Enter the contact's name: ");
 					    String contactName = readInfo2.nextLine();
+						System.out.println();
 					    Contacts.printEventsByContactName(contactName);
 					    break;
 					case 2:
 					    System.out.print("Enter the event title: ");
 					    String eventTitle = readInfo2.nextLine();
+						System.out.println();
 					    Events.printEventsByTitle(eventTitle);
 					    break;
 				        }
@@ -281,12 +299,14 @@ public class Phonebook {
 
 			case 6: 
 				Scanner readFirst = new Scanner(System.in);
-				System.out.println("Enter the first name:");
+				System.out.println();
+				System.out.print("Enter the first name:");
 				String firstName = readFirst.nextLine();
 				Contacts.searchByFirstName(firstName);
 				break;
 			
 			case 7: 
+				System.out.println();
 				Events.displayAllEventsInformation();
 				break;
 				
@@ -302,13 +322,4 @@ public class Phonebook {
 	
 		}while(choice >= 1 && choice < 9); 
 
-	}
-		
-}
-
-
-		
-	
- 
-
-	
+	}	

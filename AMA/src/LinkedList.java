@@ -1,4 +1,3 @@
-
 class Node<T> {
 	
 	public T data;
@@ -93,8 +92,8 @@ public class LinkedList<T> {
     	Node<T> tmp = head;
     		while(tmp != null) {
     			((Contact)tmp.data).displayContact();
-    			System.out.println("-------------------------------------------------");
     			tmp = tmp.next;
+				System.out.println();
     		}    	
     }
     public void displayAllEventsInformation() {
@@ -102,10 +101,10 @@ public class LinkedList<T> {
     		System.out.println("No Events");
     	}
     	Node<T> tmp = head;
-    		while(tmp != null){
+    		while(tmp != null) {
     			((Event)tmp.data).displayEvent();
-    			System.out.println("-------------------------------------------------");
     			tmp = tmp.next;
+				System.out.println();
     		}    	
     }
     
@@ -294,7 +293,7 @@ public class LinkedList<T> {
         boolean delete = false;
 
         if (head == null) {
-            System.out.println("The Phonebook is empty, can not delete.");
+        //    System.out.println("The Phonebook is empty, can not delete.");
             return;
         }
 
@@ -408,7 +407,6 @@ public class LinkedList<T> {
     			 found = true;
     			 System.out.println("Contact found!");
     			((Contact)tmp.data).displayContact();
-    			System.out.println("--------------------------------------");
     		 }
     		    tmp = tmp.next;
     	 } if(found==false)
@@ -426,7 +424,6 @@ public class LinkedList<T> {
     			 found = true;
     			 System.out.println("Contact found!");
     			((Contact)tmp.data).displayContact();
-    			System.out.println("--------------------------------------");
     		 }
     		    tmp = tmp.next;
     	 } if(found==false)
@@ -444,7 +441,6 @@ public class LinkedList<T> {
         			 found = true;
         			 System.out.println("Contact found!");
         			((Contact)tmp.data).displayContact();
-        			System.out.println("--------------------------------------");
         		 }
         		    tmp = tmp.next;
         	 } if(found==false)
@@ -460,9 +456,10 @@ public class LinkedList<T> {
         boolean found = false;
         while (tmp != null) {
    		    if(((Contact)tmp.data).getName().toLowerCase().startsWith(firstName.toLowerCase())) {
-               ((Contact)tmp.data).displayContact();
+				System.out.println();
+   		    	((Contact)tmp.data).displayContact();
+				System.out.println();
                 found = true;
-                System.out.println("-------------------------------------------------");
             }
 
             tmp = tmp.next;
@@ -474,8 +471,10 @@ public class LinkedList<T> {
     }
 
     public void printEventsByContactName(String name) {
-    	if(head==null)
-     		System.out.println("There are no events Scheduled");
+    	if(head==null) {
+    		System.out.println("There are no events Scheduled");
+			System.out.println();
+    	}
     	 else {
     		 boolean found = false;
     		 Node<T> tmp = head;
@@ -483,6 +482,7 @@ public class LinkedList<T> {
         		 if(((Contact)tmp.data).getName().equalsIgnoreCase(name)) {
         			 found = true;
         		    System.out.println("Contact found!");
+					System.out.println();
        			    System.out.println("Contact name: "+((Contact)tmp.data).getName());
         		    ((Contact)tmp.data).getEvents().displayAllEventsInformation();
         		 }
@@ -506,7 +506,6 @@ public class LinkedList<T> {
         			 System.out.println("Event date: "+((Event)tmp.data).getDate());
         			 System.out.println("Event time: "+((Event)tmp.data).getTime());
         			 System.out.println("Event location: "+((Event)tmp.data).getLocation());
-        			 System.out.println("--------------------------------------");
         		 }
         		    tmp = tmp.next;
         	 } if(found==false)
@@ -528,4 +527,3 @@ public class LinkedList<T> {
     		}
     		return false;
     }
-}
