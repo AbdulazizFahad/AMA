@@ -142,7 +142,7 @@ public class LinkedList<T> {
         }
         else {
 
-            if(((Contact)x).compareTo(((Contact)head.data).getName() ) < 0) {
+            if(((Contact)x).getName().toLowerCase().compareTo(((Contact)head.data).getName().toLowerCase() ) < 0) {
                 newNode.next = head;
                 head = newNode;
                 System.out.println("Contact added successfully!");
@@ -152,7 +152,7 @@ public class LinkedList<T> {
             else {
                 Node<T> tmp = head;
                 Node<T> pervious = null;
-                while(tmp != null && ((Contact)tmp.data).compareTo(((Contact)x).getName()) <= 0 ){
+                while(tmp != null && ((Contact)tmp.data).getName().toLowerCase().compareTo(((Contact)x).getName().toLowerCase()) <= 0 ){
                     pervious = tmp;
                     tmp = tmp.next;
                 }
@@ -193,7 +193,7 @@ public class LinkedList<T> {
         }
         else {
 
-            if(((Event)x).getTitle().compareTo(((Event)head.data).getTitle() ) < 0) { // if the result is negative that means X must first 
+            if(((Event)x).getTitle().toLowerCase().compareTo(((Event)head.data).getTitle().toLowerCase() ) < 0) { // if the result is negative that means X must first 
                 newNode.next = head;
                 head = newNode;
                // System.out.println("Event added successfully!");
@@ -202,7 +202,7 @@ public class LinkedList<T> {
             else {
                 Node<T> tmp = head;
                 Node<T> pervious = null;
-                while(tmp != null && ((Event)tmp.data).compareTo(((Event)x).getTitle()) <= 0 ){
+                while(tmp != null && ((Event)tmp.data).getTitle().toLowerCase().compareTo(((Event)x).getTitle().toLowerCase()) <= 0 ){
                     pervious = tmp;
                     tmp = tmp.next;
                 }
