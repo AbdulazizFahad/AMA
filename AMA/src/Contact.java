@@ -1,53 +1,53 @@
 import java.util.Scanner; 
 
-    public class Contact implements Comparable<String>{
+	public class Contact implements Comparable<String>{
     	
 	
-	private String name;
-	private String phoneNumber;
-	private String email;
-	private String address;     // Contact informations
-	private String birthday;
-	private String notes;
-	private LinkedList <Event> events = new LinkedList<Event>(); // All event that has been schedule with this contact
+    	private String name;
+    	private String phoneNumber;
+    	private String email;
+    	private String address;     // Contact informations
+    	private String birthday;
+		private String notes;
+		private LinkedList <Event> events = new LinkedList<Event>(); // All event that has been schedule with this contact
 
 	
-	public Contact(String name, String phoneNumber, String email, String address, String birthday, String notes) {
+		public Contact(String name, String phoneNumber, String email, String address, String birthday, String notes) {
 		
-		this.name = name;
-		this.phoneNumber = phoneNumber;
-		this.email = email;               // Constructor
-		this.address = address;
-		this.birthday = birthday;
-		this.notes = notes;
-	}
-	public LinkedList<Event> getEvents() {
-		return events;
-	}
-	public void setEvents(LinkedList<Event> events) {
-		this.events = events;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-	public String getEmail() {
-		return email;
-	}                                                                 // setters and getters 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getAddress() {
-		return address;
-	}
+			this.name = name;
+			this.phoneNumber = phoneNumber;
+			this.email = email;               // Constructor
+			this.address = address;
+			this.birthday = birthday;
+			this.notes = notes;
+		}
+		public LinkedList<Event> getEvents() {
+			return events;
+		}
+		public void setEvents(LinkedList<Event> events) {
+			this.events = events;
+		}
+		public String getName() {
+			return name;
+		}
+		public void setName(String name) {
+			this.name = name;
+		}
+		public String getPhoneNumber() {
+			return phoneNumber;
+		}
+		public void setPhoneNumber(String phoneNumber) {
+			this.phoneNumber = phoneNumber;
+		}
+		public String getEmail() {
+			return email;
+		}                                                                 // setters and getters 
+		public void setEmail(String email) {
+			this.email = email;
+		}
+		public String getAddress() {
+			return address;
+		}
 	public void setAddress(String adress) {
 		this.address = adress;
 	}
