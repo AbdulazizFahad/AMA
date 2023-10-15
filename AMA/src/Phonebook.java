@@ -110,6 +110,7 @@ public class Phonebook {
 				        input.nextLine(); // Clear the invalid input
 				    }
 				}
+				System.out.println();
 				
 				switch(searchChoice){
           
