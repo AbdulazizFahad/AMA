@@ -224,7 +224,7 @@ public class LinkedList<T> {
 
     	else {
     		
-			if(((Contact)head.data).getName().equals(name)) {
+			if(((Contact)head.data).getName().equalsIgnoreCase(name)) {
     			head = head.next;
     			System.out.println("Contact deleted successfully!");
     			System.out.println();
@@ -236,7 +236,7 @@ public class LinkedList<T> {
     		Node<T> tmp = head;
     		Node<T> pervious = null;
     		while(tmp != null ) {
-    			if(((Contact)tmp.data).getName().equals(name)) {
+    			if(((Contact)tmp.data).getName().equalsIgnoreCase(name)) {
     				pervious.next = tmp.next;
     				tmp = pervious.next;
     				System.out.println("Contact deleted successfully!");
@@ -260,7 +260,7 @@ public class LinkedList<T> {
 
     	else {
     		
-			if(((Contact)head.data).getName().equals(phoneNumber)) {
+			if(((Contact)head.data).getName().equalsIgnoreCase(phoneNumber)) {
     			head = head.next;
     			System.out.println("Contact deleted successfully!");
     			System.out.println();
@@ -272,7 +272,7 @@ public class LinkedList<T> {
     		Node<T> tmp = head;
     		Node<T> pervious = null;
     		while(tmp != null ) {
-    			if(((Contact)tmp.data).getName().equals(phoneNumber)) {
+    			if(((Contact)tmp.data).getName().equalsIgnoreCase(phoneNumber)) {
     				pervious.next = tmp.next;
     				tmp = pervious.next;
     				System.out.println("Contact deleted successfully!");
@@ -299,7 +299,7 @@ public class LinkedList<T> {
         }
 
         while (tmp != null) {
-            if (((Event) tmp.data).getContact().getName().equals(name)) {
+            if (((Event) tmp.data).getContact().getName().equalsIgnoreCase(name)) {
                 if (previous == null) {
                     head = tmp.next;
                 } else {
@@ -328,7 +328,7 @@ public class LinkedList<T> {
         }
 
         while (tmp != null) {
-            if (((Event) tmp.data).getContact().getPhoneNumber().equals(phone)) {
+            if (((Event) tmp.data).getContact().getPhoneNumber().equalsIgnoreCase(phone)) {
                 if (previous == null) {
                     head = tmp.next;
                 } else {
@@ -355,7 +355,7 @@ public class LinkedList<T> {
     	else {
     		Node<T> tmp = head;
     		while(tmp != null) {
-       		    if(((Contact)tmp.data).getName().equals(name)) {
+       		    if(((Contact)tmp.data).getName().equalsIgnoreCase(name)) {
        		    	System.out.println("Contact found!");
        		    	((Contact)tmp.data).displayContact();
        		    	return;
@@ -372,7 +372,7 @@ public class LinkedList<T> {
     	else {
     		Node<T> tmp = head;
     		while(tmp != null) {
-       		    if(((Contact)tmp.data).getName().equals(name)) {
+       		    if(((Contact)tmp.data).getName().equalsIgnoreCase(name)) {
        		    	return tmp.data;
        		    }
         		tmp = tmp.next;
@@ -387,7 +387,7 @@ public class LinkedList<T> {
     	else {
     		Node<T> tmp = head;
     		while(tmp != null) {
-       		    if(((Contact)tmp.data).getPhoneNumber().equals(PhoneNumber)) {
+       		    if(((Contact)tmp.data).getPhoneNumber().equalsIgnoreCase(PhoneNumber)) {
        		    	System.out.println("Contact found!");
        		    	((Contact)tmp.data).displayContact();
        		    	return;
@@ -459,7 +459,7 @@ public class LinkedList<T> {
         Node<T> tmp = head;
         boolean found = false;
         while (tmp != null) {
-   		    if(((Contact)tmp.data).getName().startsWith(firstName)) {
+   		    if(((Contact)tmp.data).getName().toLowerCase().startsWith(firstName.toLowerCase())) {
                ((Contact)tmp.data).displayContact();
                 found = true;
                 System.out.println("-------------------------------------------------");
@@ -480,7 +480,7 @@ public class LinkedList<T> {
     		 boolean found = false;
     		 Node<T> tmp = head;
     		 while(tmp != null) {
-        		 if(((Contact)tmp.data).getName().equals(name)) {
+        		 if(((Contact)tmp.data).getName().equalsIgnoreCase(name)) {
         			 found = true;
         		    System.out.println("Contact found!");
        			    System.out.println("Contact name: "+((Contact)tmp.data).getName());
@@ -498,7 +498,7 @@ public class LinkedList<T> {
     		 boolean found = false;
     		 Node<T> tmp = head;
     		 while(tmp != null) {
-        		 if(((Event)tmp.data).getTitle().equals(title)) {
+        		 if(((Event)tmp.data).getTitle().equalsIgnoreCase(title)) {
         			 found = true;
         			 System.out.println("Event found!");
         			 System.out.println("Event title: "+((Event)tmp.data).getTitle());
@@ -519,7 +519,7 @@ public class LinkedList<T> {
     		else {
     			Node<T> tmp = head;
     			while(tmp != null) {
-    				if(event.getTime().equals(((Event)tmp.data).getTime() ) && event.getDate().equals(((Event)tmp.data).getDate()))
+    				if(event.getTime().equalsIgnoreCase(((Event)tmp.data).getTime() ) && event.getDate().equalsIgnoreCase(((Event)tmp.data).getDate()))
     					return true;
     				
         			tmp = tmp.next;
