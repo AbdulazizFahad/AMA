@@ -1,8 +1,13 @@
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
+class InvalidChoiceException extends Exception {
+    public InvalidChoiceException(String message) {
+        super(message);
+    }
+}
 public class Phonebook {
 
-	
 	static LinkedList<Contact> Contacts = new LinkedList<Contact>(); // All Contacts 
 	static LinkedList<Event> Events = new LinkedList<Event>(); // All Events 
 
@@ -62,13 +67,6 @@ public class Phonebook {
 	
 	public static void main(String[] args) {
 		
-
-	Event e1 = new Event("Lancuh w", "1/1/2022","12:00","Riyadh");
-	Event e2 = new Event("Lancuh f", "1/1/2022","12:00","Riyadh");
-	Event e3 = new Event("Lancuh f", "1/1/2022","12:00","Riyadh");
-	Event e4 = new Event("Lancuh f", "1/1/2022","12:00","Riyadh");
-
-
 	Scanner input = new Scanner(System.in);
 	
 		int choice = 0;
@@ -89,16 +87,28 @@ public class Phonebook {
 			System.out.println();
 			System.out.print("Enter your Choice: ");
 			
-			 
-	               
-	         choice = input.nextInt();
-	         input.nextLine(); 
-	                    
+			while (true) {
+                try {
+                    choice = input.nextInt();
+                    input.nextLine(); 
+                    if (choice < 1 || choice > 9) {
+                        throw new InvalidChoiceException("Invalid input. Please enter a valid choice (1-9).");
+                    }
+                    break; 
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid input. Please enter a valid choice (1-9).");
+                    input.nextLine(); 
+                } catch (InvalidChoiceException e) {
+                    System.out.println(e.getMessage());
+                }
+			}
+			
 			switch(choice) {
 		
 			case 1:
 				
 				Scanner add = new Scanner(System.in);
+				System.out.println();
 				System.out.print("Enter the contact's name: ");
 				String newName = add.nextLine();
 				System.out.print("Enter the contact's phone number: ");
@@ -121,6 +131,7 @@ public class Phonebook {
 				break;
 			
 			case 2: 
+				System.out.println();
 				System.out.println("Enter search criteria:");
 				System.out.println("1. Name");
 				System.out.println("2. Phone Number");
@@ -132,13 +143,23 @@ public class Phonebook {
 				Scanner searchCritrea = new Scanner(System.in);
 				int searchChoice = 0;
 				
-				
+				while (true) {
 				    System.out.print("Enter your choice: ");
-				   
+				    try {
 				        searchChoice = input.nextInt();
-				        input.nextLine(); 
-				        
-				    
+				        input.nextLine(); // Consume the newline character
+
+				        if (searchChoice >= 1 && searchChoice <= 5) {
+				            break; // Exit the loop if the choice is valid
+				        } else {
+				            System.out.println("Invalid input. Please enter a valid choice (1-5).");
+				        }
+				    } catch (InputMismatchException e) {
+				        System.out.println("Invalid input. Please enter a valid choice (1-5).");
+				        input.nextLine(); // Clear the invalid input
+				    }  
+				}
+				System.out.println();
 				
 				switch(searchChoice){
           
@@ -180,6 +201,7 @@ public class Phonebook {
 					break;
             
 				}
+				System.out.println();
 				break;
 			
 			
@@ -187,23 +209,34 @@ public class Phonebook {
 				Scanner delete = new Scanner(System.in);
 				Scanner deleteContact = new Scanner(System.in);
 				
+				System.out.println();
 				System.out.println("Enter delete criteria:");
 				System.out.println("1. Delete by name");
 				System.out.println("2. Delete by phone number");
 				System.out.println();
-				
 				int deleteChoice = 0;
 				
+				while (true) {
 				    System.out.print("Enter your choice: ");
+				    try {
 				        deleteChoice = delete.nextInt();
 				        delete.nextLine(); // Consume the newline character
 
-				     
-				
+				        if (deleteChoice == 1 || deleteChoice == 2) {
+				            break; // Exit the loop if the choice is valid
+				        } else {
+				            System.out.println("Invalid input. Please enter a valid choice (1 or 2).");
+				        }
+				    } catch (InputMismatchException e) {
+				        System.out.println("Invalid input. Please enter a valid choice (1 or 2).");
+				        delete.nextLine(); // Clear the invalid input
+				    }
+				}
 				
 				switch(deleteChoice) {
 				
 				case 1:
+					System.out.println();
 					System.out.print("Enter Name of contact: ");
 					String deleteByName = deleteContact.nextLine();
 					Contacts.deleteContactByName(deleteByName);
@@ -211,6 +244,7 @@ public class Phonebook {
 					break;
 			
 				case 2:
+					System.out.println();
 					System.out.print("Enter Phone number of contact: ");
 					String deleteByPhone = deleteContact.nextLine();
 					Contacts.deleteContactByPhoneNumber(deleteByPhone);
@@ -223,6 +257,7 @@ public class Phonebook {
 			
 			case 4:
 				Scanner read = new Scanner(System.in);
+				System.out.println();
 				System.out.println("Enter Event Title: ");
 				String nTitle = read.nextLine();
 				System.out.println("Enter Contact name: ");
@@ -237,10 +272,18 @@ public class Phonebook {
 				Event e = new Event(nTitle,nDate,nTime,nLocation);
 				Contact c = Contacts.SearchByName2(nContactName);
 				boolean checkIsConflict = Events.isConflict(e);
-				if(c == null)
+				
+
+				if(c == null) {
+					System.out.println();
 					System.out.println("The contact that you want to Schedule does not exist");
-				if(checkIsConflict == true)
+				}	
+				if(checkIsConflict == true) {
+					System.out.println();
 					System.out.println("There is a conflict!");
+					System.out.println();
+				}
+				
 				if(c != null && checkIsConflict == false) {
 					e.setContact(c);
 					c.getEvents().addEvent(e);
@@ -248,7 +291,6 @@ public class Phonebook {
 					System.out.println("Event has been Schedule succssfully!");
 					System.out.println();
 				}
-				
 				break;
 			
 			case 5: 
@@ -256,45 +298,59 @@ public class Phonebook {
 				Scanner readInfo = new Scanner(System.in);
 				Scanner readInfo2 = new Scanner(System.in);
 
+				System.out.println();
 				System.out.println("Enter search criteria");
 				System.out.println("1. Contact name");
 				System.out.println("2. Event title");
 				System.out.println();
+				int eventSearchChoice = 0;
 				
+				while (true) {
 				    System.out.print("Enter your choice: ");
-				    
-				        int eventSearchChoice = readInfo.nextInt();
-				                                                                       
-				        switch (eventSearchChoice) {
-						case 1:
-					        System.out.print("Enter the contact's name: ");
-					        String contactName = readInfo2.nextLine();
-					        Contacts.printEventsByContactName(contactName);
-					        break;
-					    case 2:
-					        System.out.print("Enter the event title: ");
-					        String eventTitle = readInfo2.nextLine();
-					        Events.printEventsByTitle(eventTitle);
-					        break;
+				    try {
+				        eventSearchChoice = input.nextInt();
+				        input.nextLine(); // Consume the newline character
+
+				        if (eventSearchChoice == 1 || eventSearchChoice == 2) {
+				            break; // Exit the loop if the choice is valid
+				        } else {
+				            System.out.println("Invalid input. Please enter a valid choice (1 or 2).");
 				        }
-				        break;
+				    } catch (InputMismatchException e11) {
+				        System.out.println("Invalid input. Please enter a valid choice (1 or 2).");
+				        input.nextLine(); // Clear the invalid input
+				    }
+				}                                  
+				switch (eventSearchChoice) {
+					case 1:
+						System.out.print("Enter the contact's name: ");
+						String contactName = readInfo2.nextLine();
+						System.out.println();
+						Contacts.printEventsByContactName(contactName);
+						break;
+					case 2:
+						System.out.print("Enter the event title: ");
+						String eventTitle = readInfo2.nextLine();
+						System.out.println();
+						Events.printEventsByTitle(eventTitle);
+						break;
+				        }
+				break;
 
 			case 6: 
 				Scanner readFirstName = new Scanner(System.in);
+				System.out.println();
 				System.out.println("Enter the first name:");
 				String firstName = readFirstName.nextLine();
 				searchByFirstName(firstName);
 				break;
 			
 			case 7: 
-				
-				
+				System.out.println();
 				Events.displayAllEventsInformation();
 				break;
 				
-				
 			case 8:
-				
 				Contacts.displayAllContactsInformation();
 				break;
 				
@@ -304,9 +360,6 @@ public class Phonebook {
 				break;	
 			}
 	
-		}while(choice >= 1 && choice < 9); 
-
-	}
-		
+		}while(choice >= 1 && choice < 9);
+	}	
 }
-	

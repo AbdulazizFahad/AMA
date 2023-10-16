@@ -50,7 +50,6 @@ public class Event implements Comparable<String> {
 		System.out.println("Event Location: "+location);
 
 	}
-
 	@Override
 	public int compareTo(String title) {    //## We will use this method in Sorting to know which Object must be First 
 		return this.title.compareTo(title); //## This method Will
