@@ -285,9 +285,9 @@ public class Phonebook {
 				}
 				
 				if(c != null && checkIsConflict == false) {
-					e.setContact(c);
-					c.getEvents().addEvent(e);
-					Events.addEvent(e);
+					e.setContact(c); // set the contact to the event
+					c.getEvents().addEvent(e); // add the event to the contacts list
+					Events.addEvent(e); // add the events to the  list of all events 
 					System.out.println("Event has been Schedule succssfully!");
 					System.out.println();
 				}

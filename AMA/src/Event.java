@@ -7,12 +7,6 @@ public class Event implements Comparable<String> {
 	private String location;
 	private Contact contact;
 
-	public Contact getContact() {
-		return contact;
-	}
-	public void setContact(Contact contact) {
-		this.contact = contact;
-	}
 	public Event(String title, String date, String time, String location) {
 		this.title = title;
 		this.date = date;
@@ -42,6 +36,12 @@ public class Event implements Comparable<String> {
 	}
 	public void setLocation(String location) {
 		this.location = location;
+	}
+	public Contact getContact() {
+		return contact;
+	}
+	public void setContact(Contact contact) {
+		this.contact = contact;
 	}
 	public void displayEvent() { 
 		System.out.println("Event Title: "+title);

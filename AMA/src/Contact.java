@@ -20,12 +20,6 @@ import java.util.Scanner;
 		this.birthday = birthday;
 		this.notes = notes;
 	}
-	public LinkedList<Event> getEvents() {
-		return events;
-	}
-	public void setEvents(LinkedList<Event> events) {
-		this.events = events;
-	}
 	public String getName() {
 		return name;
 	}
@@ -62,7 +56,12 @@ import java.util.Scanner;
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-	
+	public LinkedList<Event> getEvents() {
+		return events;
+	}
+	public void setEvents(LinkedList<Event> events) {
+		this.events = events;
+	}
 	public void displayContact() {
 		 
 		System.out.println("Name: "+name);

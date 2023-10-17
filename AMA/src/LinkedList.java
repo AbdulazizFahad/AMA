@@ -51,14 +51,13 @@ public class LinkedList<T> {
     public void insert(T val) { // inserting nodes
 
         Node<T> newNode = new Node<T>(val);
-   
+        
         if (head==null) {
         	head=newNode;
         	current=newNode;
         }
         	
         else {
-
             newNode.next = current.next;
             current.next = newNode;
             current = newNode;
@@ -71,24 +70,24 @@ public class LinkedList<T> {
             head = head.next;
             current=current.next;
         }
-            else {
-                Node<T> tmp = head;
-
-                while(tmp.next != current) {
+        else {
+           Node<T> tmp = head;
+           while(tmp.next != current) {
                     tmp = tmp.next;
-            }
-        
-        tmp.next = current.next;
-            }
+           } 
+           tmp.next = current.next;
+        }
         if (current.next != null)
             current = current.next;
         else
             current = head;
     }
     public void displayAllContactsInformation() { 
-    	if(head == null)
+    	if(head == null) {
     		System.out.println("The phonebook is empty");
     	    System.out.println();
+    	}
+    		
     	Node<T> tmp = head;
     		while(tmp != null) {
     			((Contact)tmp.data).displayContact();
@@ -97,9 +96,11 @@ public class LinkedList<T> {
     		}    	
     }
     public void displayAllEventsInformation() {
-    	if(head == null) 
+    	if(head == null) {
     		System.out.println("No Events");
     	    System.out.println();
+    	}
+    		
     	Node<T> tmp = head;
     		while(tmp != null){
     			((Event)tmp.data).displayEvent();
@@ -159,9 +160,9 @@ public class LinkedList<T> {
                 newNode.next = tmp;
                 System.out.println("Contact added successfully!");
                 System.out.println();
-             }
-          }
-        }  
+            }
+         }
+       }  
     }
     public void addEvent(T x){ // this method will add alphabetically event
     	
@@ -205,15 +206,14 @@ public class LinkedList<T> {
     			head = head.next;
     			System.out.println("Contact deleted successfully!");
     			System.out.println();
-    			return;
-    			
-    		}
-    		
+    			return;	
+    		}	
     		else {
-    		Node<T> tmp = head;
-    		Node<T> pervious = null;
-    		while(tmp != null ) {
-    			if(((Contact)tmp.data).getName().equalsIgnoreCase(name)) { // search after the head
+    		  Node<T> tmp = head;
+    		  Node<T> pervious = null;
+    		  
+    		  while(tmp != null ) {
+    			 if(((Contact)tmp.data).getName().equalsIgnoreCase(name)) { // search after the head
     				pervious.next = tmp.next;
     				tmp = pervious.next;
     				System.out.println("Contact deleted successfully!");
@@ -245,19 +245,19 @@ public class LinkedList<T> {
     		}
     		
     		else {
-    		Node<T> tmp = head;
-    		Node<T> pervious = null;
-    		while(tmp != null ) {
-    			if(((Contact)tmp.data).getName().equalsIgnoreCase(phoneNumber)) {// search after the head
+    		   Node<T> tmp = head;
+    		   Node<T> pervious = null;
+    		   while(tmp != null ) {
+    			 if(((Contact)tmp.data).getName().equalsIgnoreCase(phoneNumber)) {// search after the head
     				pervious.next = tmp.next;
     				tmp = pervious.next;
     				System.out.println("Contact deleted successfully!");
     				System.out.println();
     				return;
     			}
-    			pervious = tmp;
-    			tmp = tmp.next;
-    		  }
+    			 pervious = tmp;
+    			 tmp = tmp.next;
+    		      }
     		    System.out.println("Not found");
     		}
     	}
@@ -282,7 +282,7 @@ public class LinkedList<T> {
                 } else {
                     previous.next = tmp.next; 
                 }
-                delete = true;
+                delete = true; 
                 tmp = tmp.next;
             } else {
                 previous = tmp; // moving previous
@@ -310,7 +310,8 @@ public class LinkedList<T> {
             if (((Event) tmp.data).getContact().getPhoneNumber().equalsIgnoreCase(phone)) {
                 if (previous == null) { // if the event we to delete on the head 
                     head = tmp.next;   // delete the head
-                } else {
+                } 
+                else {
                     previous.next = tmp.next;
                 }
                 delete = true;
