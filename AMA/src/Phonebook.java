@@ -9,7 +9,7 @@ public class Phonebook {
         BST = new ContactBST();
         Events = null;
     }
-    public void addContact(Contact c) {    //  add a new contact before checks for existing contact with the same name or phone number if there existing contacts it does not add. if its unique it add the new contact.
+    public void addContact(Contact c) { //add a new contact before checks for existing contact with the same name or phone number if there existing contacts it does not add. if its unique it add the new contact.
                                                                                                               
         if (BST.isExistName(c.getName())) {
             System.out.println("Contact's name already exist");

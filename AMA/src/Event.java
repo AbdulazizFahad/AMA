@@ -19,45 +19,44 @@ public class Event implements Comparable<Event> {
         listOfContactsInEvent= new LinkedList();
         next=null;
     }
-    
-	 public Date getDate() {
+	public Date getDate() {
 			return date;
 		}
-		public String getLocation() {
+	public String getLocation() {
 		return location;
 	}
 
 	public Event getNext() {
 			return next;
-		}
+	}
 
-		public void setNext(Event next) {
+	public void setNext(Event next) {
 			this.next = next;
-		}
+	}
 
-		public boolean getIsEventType() {
+	public boolean getIsEventType() {
 			return isEventType;
-		}
+	}
 
-		public void setIsEventType(boolean isEventType) {
+	public void setIsEventType(boolean isEventType) {
 			this.isEventType = isEventType;
-		}
+	}
 
 	public LinkedList<Contact> getListOfContactsInEvents() {
 			return listOfContactsInEvent;
-		}
+	}
 
-		public void setListOfContactsInEvents(LinkedList<Contact> ListOfContactsInEvents) {
+	public void setListOfContactsInEvents(LinkedList<Contact> ListOfContactsInEvents) {
 			this.listOfContactsInEvent = ListOfContactsInEvents;
-		}
+	}
 
 	public void setLocation(String location) {
 		this.location = location;
 	}
 
-		public void setDate(Date date) {
+	public void setDate(Date date) {
 			this.date = date;
-		}
+	}
     
     public String getTitle() {
 		return title;
@@ -79,7 +78,7 @@ public class Event implements Comparable<Event> {
         if(listOfContactsInEvent.isEmpty()) 
             return ""; // Empty 
         String contacts="";
-        if(isEventType) { // True means its Event so there is one contact or more
+        if(isEventType) { // if ture so isEventType is Event 
         
             listOfContactsInEvent.findFirst();
             while(!listOfContactsInEvent.Last()) {

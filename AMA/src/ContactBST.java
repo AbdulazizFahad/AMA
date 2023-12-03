@@ -1,4 +1,5 @@
 class BSTNode<T> {
+	
     public Contact data;
     public BSTNode<T> left, right;
 
@@ -9,7 +10,7 @@ class BSTNode<T> {
     }
 }
 public class ContactBST<Y extends Comparable<Y> > {
-
+	
     public BSTNode<Y> root;
     int size;
 
@@ -55,7 +56,6 @@ public class ContactBST<Y extends Comparable<Y> > {
         }
         size++;
     }
-
     public boolean isExistName(String name) { // name existence  if we have contact with the same name before
         BSTNode<Y> p = root;
         while (p != null) {
@@ -68,12 +68,9 @@ public class ContactBST<Y extends Comparable<Y> > {
         }
         return false;
     }
-
-    
     public boolean isExistPhone(String phone) { //phone existence we have contact with same phone before
         return isInOrder(root, phone);
     }
-
     private boolean isInOrder(BSTNode root , String phone) {
         if (root == null) 
             return false;
@@ -113,7 +110,6 @@ public class ContactBST<Y extends Comparable<Y> > {
         System.out.println("No contact found!");
         return null;
     }
-
     public void SearchByPhone(String phone) { // this method will search for a contact by name. If it has been found displays the contact information ,otherwise it display a "No contact found!" message 
         Contact con = SearchByPhone(root, phone);
         if (con != null) {
@@ -212,57 +208,50 @@ public class ContactBST<Y extends Comparable<Y> > {
             System.out.println("No contacts found!");
     }
     public void delete(String name) {
-        BSTNode<Y> p = root;
-        BSTNode<Y> q = null; // The Parent of p
+        BSTNode<Y> p = root; // Starting from the root of the Binary Search Tree (BST)
+        BSTNode<Y> q = null; // q will keep track of the parent node
+
+        // Loop through the BST nodes until p becomes null
         while (p != null) {
-           if (name.compareTo(p.data.getName()) >= 0) {
-               if (name.compareTo(p.data.getName()) <= 0) {            // found the key
-                                                                        // Check the three cases
-                   if ((p.left != null) && (p.right != null)) {
-                        	                                          // Case two children
-                                                                     // Search for the min in the right subtree
-                       BSTNode<Y> min = p.right;
-                       q = p;
-                       while (min.left != null) {
-                           q = min;
-                           min = min.left;
-                       }
-                       p.data=min.data;
-                       name = min.data.getName();
-                       p = min;
-                                                                       // back to case 1 or 2
-                   }
-                                                                       // The subtree root at p will change
-                    if (p.left == null)                               // one or no children
-                         p = p.right;
-                    else                                             // one child
-                         p = p.left;
-                       
-                    if (q != null) {
-                        if (name.compareTo(q.data.getName()) >= 0) 
-                            q.right = p;
-                        else 
-                            q.left = p;
-                            
-                        } 
-                    else            //  no parent for p root will change
-                       root = p;
-                        
-                        size--;
-
-               } 
-               else {
-                        q = p;
-                        p = p.right;
+            if (name.compareTo(p.data.getName()) >= 0) {// Check if the name to be deleted is greater than or equal to the current node's name
+                if (name.compareTo(p.data.getName()) <= 0) { // If the name is found in the current node
+                    if ((p.left != null) && (p.right != null)) { // If the current node has both left and right children
+                        BSTNode<Y> min = p.right; // Find the minimum node in the right subtree of the current node
+                        q = p;                    // Set q as the current node
+                        while (min.left != null) {
+                            q = min;              // Update q as the parent of the minimum node
+                            min = min.left;       // go left to find the minimum node
+                        }
+                                                  // Replace the current node's data with the minimum node's data
+                        p.data = min.data;
+                        name = min.data.getName(); // Update the name to be deleted
+                        p = min; // Set the current node as the minimum node
                     }
-           }
-           else {
-                    q = p;
-                    p = p.left;
-           }
-            
-        }
+                    if (p.left == null)
+                        p = p.right; // Replace the node with its right child
+                    else
+                        p = p.left; // Replace the node with its left child
 
+                                    // Update the parent node's 
+                    if (q != null) {
+                        if (name.compareTo(q.data.getName()) >= 0)
+                            q.right = p; // Update the right child of the parent node
+                        else
+                            q.left = p; // Update the left child of the parent node
+                    } else
+                        root = p; // Update the root if the deleted node was the root
+                    size--; // Decrement the size of the BST
+                } else {
+                    // Move to the right child if the name is greater than the current node's name
+                    q = p;
+                    p = p.right;
+                }
+            } else {
+                // Move to the left child if the name is smaller than the current node's name
+                q = p;
+                p = p.left;
+            }
+        }
     }
     public void AddEvent(Event e, String name) { //  this method is to add  event  to the contact with a provided name in a binary tree It search in the tree to find the contact by name and add it to the event to that contact list of events.
         BSTNode<Y> p = root;
@@ -277,7 +266,7 @@ public class ContactBST<Y extends Comparable<Y> > {
                 p = p.right;
         }
     }
-    public void printEventsWithContactName(String name) { //   prints events by contact by name in a binary tree. If the contact is found, it displays the events; otherwise, it prints "No contact found!".
+    public void printEventsWithContactName(String name) { // prints events by contact by name in a binary tree. If the contact is found, it displays the events; otherwise, it prints "No contact found!".
         BSTNode<Y> p = root;
         while (p != null) {
             if (p.data.getName().compareTo(name) == 0) {
@@ -300,9 +289,7 @@ public class ContactBST<Y extends Comparable<Y> > {
         }
         display(root.left);
         System.out.println(root.data);
-        
         System.out.println("");
-        
         display(root.right);
     }
     public void printAllContacts() { // Print all contacts
